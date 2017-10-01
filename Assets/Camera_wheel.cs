@@ -8,7 +8,7 @@ public class Camera_wheel : MonoBehaviour {
 	private float posX;
 	private float posY;
 	private float posZ;
-
+	[Tooltip ("GUN_camera")] public Gun_Camera guncamerascript;
 	// Use this for initialization
 	void Start () {
 		Vector3 position = transform.position;
@@ -27,5 +27,9 @@ public class Camera_wheel : MonoBehaviour {
 			posX += Input.GetAxis ("Mouse ScrollWheel") * view_value;
 			transform.position = new Vector3 (posX, posY, posZ);
 		}
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			guncamerascript.GunCamera_toggle ();
+		}
 	}
+
 }

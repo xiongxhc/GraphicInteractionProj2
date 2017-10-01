@@ -13,13 +13,9 @@ public class Gun_Camera : MonoBehaviour {
 		this_camera.enabled = false;
 	}
 	
+	public void GunCamera_toggle(){
+		main_camera.enabled = !main_camera.enabled;
+		this_camera.enabled = !this_camera.enabled;
+	}
 
-	public void GunCamera_ON(){
-		main_camera.enabled = false;
-		this_camera.enabled = true;
-	}
-	public void GunCamera_OFF(){
-		main_camera.enabled = true;
-		this_camera.enabled = false;
-	}
 }
