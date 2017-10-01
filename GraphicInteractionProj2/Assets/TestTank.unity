@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.35872743, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: cbac5c40bbb3a7b4d9c54abfbe7e3e9b, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39654073}
-  m_LocalRotation: {x: 0.00000003841706, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.03936625, y: 0.0000001192093, z: 0.6951509}
   m_LocalScale: {x: 2.491018, y: 2.491018, z: 2.491019}
   m_Children:
@@ -551,7 +551,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 164468719}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &164468723
 Behaviour:
   m_ObjectHideFlags: 0
@@ -818,8 +818,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 659171532}
+  m_Children: []
   m_Father: {fileID: 1528379630}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -868,12 +867,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 659171531}
-  m_LocalRotation: {x: 0.5416752, y: 0.5416752, z: 0.45451948, w: 0.45451948}
-  m_LocalPosition: {x: -20, y: 0, z: 5}
+  m_LocalRotation: {x: 0.54167527, y: 0.54167527, z: 0.4545195, w: 0.4545195}
+  m_LocalPosition: {x: -19.524538, y: -0.2455596, z: 3.8709588}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 498029985}
-  m_RootOrder: 0
+  m_Father: {fileID: 2011843050}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 100, z: 90}
 --- !u!81 &659171533
 AudioListener:
@@ -881,7 +880,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 659171531}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &659171534
 Behaviour:
   m_ObjectHideFlags: 0
@@ -943,7 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af78015c4167ed7468cc31f448beb5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view_value: 2
+  view_value: 5
 --- !u!1 &716917738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,6 +1461,7 @@ GameObject:
   - component: {fileID: 1528379630}
   - component: {fileID: 1528379628}
   - component: {fileID: 1528379629}
+  - component: {fileID: 1528379631}
   m_Layer: 0
   m_Name: tank
   m_TagString: Untagged
@@ -1498,15 +1498,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea591bf28d6a2734692f23bab0450bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
+  movementSpeed: 0
+  rigidbody: {fileID: 0}
 --- !u!4 &1528379630
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1528379627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.041107662, z: 0.056324013}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 10538235}
@@ -1530,6 +1531,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1528379631
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528379627}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1694469727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1722,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1714444301}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
@@ -2202,6 +2218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 39654074}
+  - {fileID: 659171532}
   m_Father: {fileID: 1528379630}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2217,6 +2234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tank: {fileID: 0}
-  movementSpeed: 5
+  movementSpeed: 0.5
   mouseSensetivity: 1
   rotateSensetivity: 1
+  gunElevation: 20
+  gunDepression: -15

@@ -82,10 +82,10 @@ public class Rotation : MonoBehaviour {
 		LastMousePosition = Input.mousePosition;
 
 		//TargetPostionY = Mathf.MoveTowardsAngle (rotY, TargetPostionY, 270.0f * Time.deltaTime);
-		print(rotY);
+		//print(rotY);
 		transform.rotation = Quaternion.Euler (rotX, rotY, rotZ);
 		//cube.transform.rotation = Quaternion.Euler (camX, camY, camZ);
-		print (cube.transform.rotation.eulerAngles);
+		//print (cube.transform.rotation.eulerAngles);
 
 		//transform.Rotate (0, rotY, 0);
 
