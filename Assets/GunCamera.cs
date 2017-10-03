@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun_Camera : MonoBehaviour {
+public class GunCamera : MonoBehaviour {
 
 	public Camera main_camera;
 	public Camera this_camera;

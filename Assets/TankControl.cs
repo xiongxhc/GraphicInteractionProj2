@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TankControl : MonoBehaviour {
 	public float powerKN = 1;
-	public float torqueKNM = 5;
+	public float rotateSpeed = 5;
 	private float power;
 	private float torque;
+
 	// Use this for initialization
 	public Rigidbody rb;
 	void Start () {
@@ -14,7 +15,6 @@ public class TankControl : MonoBehaviour {
 		//transform.Rotate (-90, 0, 0);
 		rb = GetComponent<Rigidbody>();
 		power = powerKN * 1000;
-		torque = torqueKNM * 1000;
 	}
 	
 	// Update is called once per frame
@@ -27,25 +27,23 @@ public class TankControl : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.Locked;
 	
 	}
-	void OnGUI() {
-		GUI.Label (new Rect (10, 40, 200, 200), rb.velocity.ToString());
-	}
+
 	void FixedUpdate() {
 //		if (Input.GetButtonDown("Jump"))
 //			rigidbody.velocity = new Vector3(0, 10, 0);
 		if (Input.GetKey(KeyCode.W)) rb.AddForce(transform.right * power);
-		// check if tank stationery. If so, toque multiply by two - since two track will be both rotating.
-		var torque_multi = 1f;
-		if (rb.velocity.magnitude <= 0.1f)
-			torque_multi = 2f;
+		if (Input.GetKey(KeyCode.S)) rb.AddForce(transform.right * -power);
 		if (Input.GetKey (KeyCode.A)) {
-			rb.AddTorque (transform.forward * torque * -1 * torque_multi);
+			transform.Rotate (0.0f,rotateSpeed*-1,0.0f,Space.World);
 		}
 			
 		if (Input.GetKey (KeyCode.D))
-			rb.AddTorque (transform.forward * torque * 1 * torque_multi);
+			transform.Rotate (0.0f,rotateSpeed,0.0f,Space.World);;
 	}
 	void Keyboard_control(){
 
+	}
+	public Vector3 getWorldPosition(){
+		return transform.position;
 	}
 }
