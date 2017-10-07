@@ -36,4 +36,5 @@ public class FlyingCam : MonoBehaviour {
 		transform.Translate (dir * speed * Time.deltaTime);
 
 	}
+
 }
