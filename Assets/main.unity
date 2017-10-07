@@ -1379,7 +1379,7 @@ Transform:
   - {fileID: 1374316467}
   - {fileID: 962494318}
   - {fileID: 1581148164}
-  - {fileID: 453792392}
+  - {fileID: 1199958824}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2182,35 +2182,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4600894622911722, guid: 29a5d9d78450a304792859b34ec301ce,
     type: 2}
   m_PrefabInternal: {fileID: 445589406}
---- !u!1 &453792391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 453792392}
-  m_Layer: 0
-  m_Name: TurrentCenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &453792392
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 453792391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4360957, y: 0.24555945, z: 1.8241928}
-  m_LocalScale: {x: 2.491018, y: 2.49102, z: 2.491021}
-  m_Children:
-  - {fileID: 1199958824}
-  m_Father: {fileID: 231572986}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &462583059
 Prefab:
   m_ObjectHideFlags: 0
@@ -2891,13 +2862,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 639974928}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 902063728}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &639974930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4083,14 +4054,14 @@ Transform:
   m_PrefabParentObject: {fileID: 400006, guid: cbac5c40bbb3a7b4d9c54abfbe7e3e9b, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 937040802}
-  m_LocalRotation: {x: 0, y: 0.6427876, z: 0, w: 0.7660445}
+  m_LocalRotation: {x: 0.45451945, y: 0.45451945, z: 0.54167527, w: 0.54167527}
   m_LocalPosition: {x: 2.133787, y: 0.005184099, z: 0.08123994}
   m_LocalScale: {x: 0.3383591, y: 0.3383591, z: 0.2425257}
   m_Children:
   - {fileID: 902063728}
   m_Father: {fileID: 1199958824}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 80, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 80, z: 90}
 --- !u!23 &937040804
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4143,10 +4114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c51412742b84e7ab495046ea09ead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turrentRotationSpeed: 5
+  turrentRotationSpeed: 80
   gunElevSpeed: 1
   gunElevation: 20
   gunDepression: -15
+  aimOffset: 25
   tankbody: {fileID: 1698832826}
   cameraScrollControl: {fileID: 556033796}
   turretControl: {fileID: 1199958827}
@@ -5471,13 +5443,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1199958823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.4360957, y: 0.24555945, z: 1.8241932}
+  m_LocalScale: {x: 2.491018, y: 2.491021, z: 2.4910219}
   m_Children:
   - {fileID: 937040803}
   - {fileID: 1193734456}
-  m_Father: {fileID: 453792392}
-  m_RootOrder: 0
+  m_Father: {fileID: 231572986}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1199958825
 MeshRenderer:

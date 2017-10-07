@@ -6,13 +6,14 @@ public class GunAiming : MonoBehaviour {
 	// Since the location aiming should be aimed from the gun, thus turrect location location should be here
 	// Use this for initialization
 
-	public float turrentRotationSpeed = 5.0f;
+	public float turrentRotationSpeed = 80f;
 	public float gunElevSpeed = 1f;
 	private Vector3 turret_euler_offset;
 	private Vector3 camera_scroll_euler_offset;
 	private Vector3 third_person_cam_euler_offset;
 	public float gunElevation = 20;
 	public float gunDepression = -15;
+	public float aimOffset = 50;
 	[Tooltip ("TankBody")] public TankBody tankbody;
 	[Tooltip ("CameraScrollControl")] public CameraScrollControl cameraScrollControl;
 	[Tooltip ("TurretControl")] public TurretControl turretControl;
@@ -21,6 +22,7 @@ public class GunAiming : MonoBehaviour {
 	void Start () {
 		camera_scroll_euler_offset = cameraScrollControl.getTransform ().eulerAngles;
 		turret_euler_offset = turretControl.getTransform ().eulerAngles;
+
 	}
 	void OnGUI(){
 //		//var turret_euler_diff = turretControl.getTransform ().eulerAngles - turret_euler_offset;
@@ -46,9 +48,21 @@ public class GunAiming : MonoBehaviour {
 
 		Vector3 targetV = aim_target - turretControl.getTransform ().position;
 		targetV.Normalize ();
-		turretControl.getTransform ().rotation = Quaternion.LookRotation (targetV);
+		Vector3 GunTarget = targetV;
+		//GunTarget.z = 0;
+		//GunTarget.x = 0;
+		//GunTarget.y = 0;
+		targetV.y = 0;
+		var TurretRotation = Quaternion.LookRotation (targetV);
 		Vector3 orientation_fix = new Vector3 (turret_euler_offset.x, turret_euler_offset.x, turret_euler_offset.z);
-		turretControl.getTransform ().rotation *= Quaternion.Euler (orientation_fix);
+		TurretRotation *= Quaternion.Euler (orientation_fix);
+		turretControl.getTransform ().rotation = Quaternion.RotateTowards(turretControl.getTransform().rotation,TurretRotation,turrentRotationSpeed*Time.deltaTime);
+
+		Vector3 gun_orientation_fix = new Vector3 (camera_scroll_euler_offset.x-aimOffset,camera_scroll_euler_offset.x,camera_scroll_euler_offset.z);
+		var GunRotation = Quaternion.LookRotation (GunTarget);
+		GunRotation *= Quaternion.Euler (gun_orientation_fix);
+		transform.rotation = Quaternion.RotateTowards (transform.rotation, GunRotation, 5);
+		transform.localRotation = Quaternion.Euler(0f,	transform.localRotation.eulerAngles.y,transform.localRotation.eulerAngles.z);
 	}
 
 	// Update is called once per frame
