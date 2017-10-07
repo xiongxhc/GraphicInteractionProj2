@@ -1359,8 +1359,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 231572982}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 10, y: 5, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 490663944}
@@ -1380,8 +1380,8 @@ Transform:
   - {fileID: 962494318}
   - {fileID: 1581148164}
   - {fileID: 453792392}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 2008849571}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &231572987
 BoxCollider:
@@ -2694,6 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3cea278be7c46a5964be2bd1b8fb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stepSize: 60
   thirdPersonCam: {fileID: 2066697701}
 --- !u!81 &556033797
 AudioListener:
@@ -4143,15 +4144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c51412742b84e7ab495046ea09ead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turrentRotationSpeed: 5
+  turrentRotationSpeed: 100
   gunElevSpeed: 1
   gunElevation: 20
   gunDepression: -15
+  aimOffset: 50
   tankbody: {fileID: 1698832826}
   cameraScrollControl: {fileID: 556033796}
   turretControl: {fileID: 1199958827}
   thirdPersonCam: {fileID: 2066697701}
   aimCube: {fileID: 1470077505}
+  tankControl: {fileID: 231572984}
 --- !u!1001 &944763671
 Prefab:
   m_ObjectHideFlags: 0
@@ -7059,7 +7062,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1470077500}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -9922,6 +9925,35 @@ Transform:
   m_PrefabParentObject: {fileID: 4636290877400782, guid: 22fca861a6d28224ab38a173b1ff044b,
     type: 2}
   m_PrefabInternal: {fileID: 2007703842}
+--- !u!1 &2008849570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2008849571}
+  m_Layer: 0
+  m_Name: TankCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2008849571
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008849570}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 10, y: 5, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 231572986}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2037127772
 Prefab:
   m_ObjectHideFlags: 0

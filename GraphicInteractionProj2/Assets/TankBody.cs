@@ -13,7 +13,9 @@ public class TankBody : MonoBehaviour {
 	void Update () {
 		
 	}
-
+	public Transform getTransform(){
+		return transform;
+	}
 	public Vector3 getWorldEulerAngles(){
 		return transform.eulerAngles;
 	}

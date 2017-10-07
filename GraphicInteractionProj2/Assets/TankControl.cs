@@ -46,4 +46,7 @@ public class TankControl : MonoBehaviour {
 	public Vector3 getWorldPosition(){
 		return transform.position;
 	}
+	public Transform getTransform(){
+		return transform;
+	}
 }
