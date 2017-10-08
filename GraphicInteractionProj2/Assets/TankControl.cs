@@ -5,9 +5,12 @@ using UnityEngine;
 public class TankControl : MonoBehaviour {
 	public float powerKN = 1;
 	public float rotateSpeed = 5;
-	//public float torqueKN = 5;
+	//public float torqueKN = 50;
+	public float airDrag = 0.1f;
+	public float groundGrag = 2.3f;
+	//public float stationeryTorqueMutiplier = 1.5f;
 	private float power;
-	private float torque;
+	//private float torque;
 	private bool leftTrackGrounded;
 	private bool rightTrackGrounded;
 	[Tooltip ("TankTrack")] public TankTrack leftTrack;
@@ -28,7 +31,6 @@ public class TankControl : MonoBehaviour {
 		foreach(ContactPoint contact in collision.contacts){
 			if(contact.thisCollider.name == ("LeftTrack")) leftTrackGrounded = true;
 			if(contact.thisCollider.name == ("RightTrack")) rightTrackGrounded = true;
-
 		}
 	}
 	void OnCollisionExit(Collision collision){
@@ -38,7 +40,14 @@ public class TankControl : MonoBehaviour {
 	}
 	void FixedUpdate(){
 		if (isGrounded ()) {
+			rb.drag = airDrag + groundGrag;
 		} else {
+			rb.drag = airDrag;
+		}
+		if (rb.velocity.magnitude < 0.1f) {
+			//torque = torqueKN * 1000 * stationeryTorqueMutiplier;
+		} else {
+			//torque = torqueKN * 1000;
 		}
 		if (!rb.IsSleeping()) {
 			leftTrackGrounded = false;
@@ -47,8 +56,7 @@ public class TankControl : MonoBehaviour {
 
 	}
 	void Update() {
-
-		Debug.Log(isGrounded());
+		//Debug.Log (torque);
 		if (!isGrounded ())
 			return;
 		int forceDirection = 0;
@@ -57,14 +65,14 @@ public class TankControl : MonoBehaviour {
 		if (Input.GetKey (KeyCode.S))
 			forceDirection = -1;
 		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime);
-
-		if (Input.GetKey (KeyCode.A)) {
-			transform.Rotate (0.0f,rotateSpeed*-1* Time.deltaTime,0.0f,Space.World);
-		}
-	
+		int torqueDirection = 0;
+		if (Input.GetKey (KeyCode.A)) 
+			torqueDirection = -1;
 		if (Input.GetKey (KeyCode.D))
-			transform.Rotate (0.0f,rotateSpeed* Time.deltaTime,0.0f,Space.World);
-
+			torqueDirection = 1;
+		
+		transform.Rotate (0.0f,0.0f,rotateSpeed* Time.deltaTime * torqueDirection,Space.Self);
+		//rb.AddTorque (transform.forward * torque * torqueDirection * Time.deltaTime);
 		if (Input.GetKey(KeyCode.Escape))
 			Cursor.lockState = CursorLockMode.None;
 		else

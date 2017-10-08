@@ -1314,7 +1314,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 2
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1332,7 +1332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerKN: 800
-  rotateSpeed: 40
+  rotateSpeed: 50
+  airDrag: 0.1
+  groundGrag: 2.3
   leftTrack: {fileID: 490663948}
   rightTrack: {fileID: 1842032298}
   rb: {fileID: 231572983}
