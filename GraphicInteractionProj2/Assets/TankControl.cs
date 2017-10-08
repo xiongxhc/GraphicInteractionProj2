@@ -5,9 +5,13 @@ using UnityEngine;
 public class TankControl : MonoBehaviour {
 	public float powerKN = 1;
 	public float rotateSpeed = 5;
+	//public float torqueKN = 5;
 	private float power;
 	private float torque;
-
+	private bool leftTrackGrounded;
+	private bool rightTrackGrounded;
+	[Tooltip ("TankTrack")] public TankTrack leftTrack;
+	[Tooltip ("TankTrack")] public TankTrack rightTrack;
 	// Use this for initialization
 	public Rigidbody rb;
 	void Start () {
@@ -15,30 +19,56 @@ public class TankControl : MonoBehaviour {
 		//transform.Rotate (-90, 0, 0);
 		rb = GetComponent<Rigidbody>();
 		power = powerKN * 1000;
+		//torque = torqueKN * 1000;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-//		Keyboard_control ();
-//		transform.Rotate(Vector3.up * Time.deltaTime * 20);
+
+	void OnCollisionStay(Collision collision){
+		foreach(ContactPoint contact in collision.contacts){
+			if(contact.thisCollider.name == ("LeftTrack")) leftTrackGrounded = true;
+			if(contact.thisCollider.name == ("RightTrack")) rightTrackGrounded = true;
+
+		}
+	}
+	void OnCollisionExit(Collision collision){
+	}
+	bool isGrounded(){
+		return leftTrackGrounded && rightTrackGrounded;
+	}
+	void FixedUpdate(){
+		if (isGrounded ()) {
+		} else {
+		}
+		if (!rb.IsSleeping()) {
+			leftTrackGrounded = false;
+			rightTrackGrounded = false;
+		}
+
+	}
+	void Update() {
+
+		Debug.Log(isGrounded());
+		if (!isGrounded ())
+			return;
+		int forceDirection = 0;
+		if (Input.GetKey (KeyCode.W))
+			forceDirection = 1;
+		if (Input.GetKey (KeyCode.S))
+			forceDirection = -1;
+		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime);
+
+		if (Input.GetKey (KeyCode.A)) {
+			transform.Rotate (0.0f,rotateSpeed*-1* Time.deltaTime,0.0f,Space.World);
+		}
+	
+		if (Input.GetKey (KeyCode.D))
+			transform.Rotate (0.0f,rotateSpeed* Time.deltaTime,0.0f,Space.World);
+
 		if (Input.GetKey(KeyCode.Escape))
 			Cursor.lockState = CursorLockMode.None;
 		else
 			Cursor.lockState = CursorLockMode.Locked;
-	
-	}
-
-	void FixedUpdate() {
-//		if (Input.GetButtonDown("Jump"))
-//			rigidbody.velocity = new Vector3(0, 10, 0);
-		if (Input.GetKey(KeyCode.W)) rb.AddForce(transform.right * power);
-		if (Input.GetKey(KeyCode.S)) rb.AddForce(transform.right * -power);
-		if (Input.GetKey (KeyCode.A)) {
-			transform.Rotate (0.0f,rotateSpeed*-1,0.0f,Space.World);
-		}
-			
-		if (Input.GetKey (KeyCode.D))
-			transform.Rotate (0.0f,rotateSpeed,0.0f,Space.World);;
 	}
 	void Keyboard_control(){
 
