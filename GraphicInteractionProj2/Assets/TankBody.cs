@@ -13,6 +13,9 @@ public class TankBody : MonoBehaviour {
 	void Update () {
 		
 	}
+	public Vector3 getSize(){
+		return GetComponent<MeshRenderer> ().bounds.size;
+	}
 	public Transform getTransform(){
 		return transform;
 	}

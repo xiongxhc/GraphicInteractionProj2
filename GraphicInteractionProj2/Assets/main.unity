@@ -1314,7 +1314,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 100
   m_Drag: 2
-  m_AngularDrag: 2
+  m_AngularDrag: 1.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1332,11 +1332,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerKN: 800
-  rotateSpeed: 50
+  maxRotateSpeed: 1.5
+  torqueKN: 2000
   airDrag: 0.1
   groundGrag: 2.3
+  stationeryTorqueMutiplier: 1.5
   leftTrack: {fileID: 490663948}
   rightTrack: {fileID: 1842032298}
+  tankBody: {fileID: 1698832826}
   rb: {fileID: 231572983}
 --- !u!95 &231572985
 Animator:
@@ -1382,7 +1385,8 @@ Transform:
   - {fileID: 1374316467}
   - {fileID: 962494318}
   - {fileID: 1581148164}
-  - {fileID: 453792392}
+  - {fileID: 1199958824}
+  - {fileID: 771697729}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2173,35 +2177,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4600894622911722, guid: 29a5d9d78450a304792859b34ec301ce,
     type: 2}
   m_PrefabInternal: {fileID: 445589406}
---- !u!1 &453792391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 453792392}
-  m_Layer: 0
-  m_Name: TurrentCenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &453792392
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 453792391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4360957, y: 0.24555945, z: 1.8241928}
-  m_LocalScale: {x: 2.491018, y: 2.49102, z: 2.491021}
-  m_Children:
-  - {fileID: 1199958824}
-  m_Father: {fileID: 231572986}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &462583059
 Prefab:
   m_ObjectHideFlags: 0
@@ -3556,6 +3531,47 @@ Transform:
   m_PrefabParentObject: {fileID: 4636290877400782, guid: 22fca861a6d28224ab38a173b1ff044b,
     type: 2}
   m_PrefabInternal: {fileID: 766656134}
+--- !u!1 &771697728
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 771697729}
+  - component: {fileID: 771697730}
+  m_Layer: 0
+  m_Name: TurretCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &771697729
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771697728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 231572986}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &771697730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771697728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.406778, y: 6.865689, z: 3.1697428}
+  m_Center: {x: -5.4402647, y: 0.44233418, z: 1.6082981}
 --- !u!1001 &777428749
 Prefab:
   m_ObjectHideFlags: 0
@@ -5477,8 +5493,6 @@ GameObject:
   - component: {fileID: 1199958826}
   - component: {fileID: 1199958825}
   - component: {fileID: 1199958827}
-  - component: {fileID: 1199958828}
-  - component: {fileID: 1199958829}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -5493,13 +5507,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1199958823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.4360957, y: 0.24555945, z: 1.8241932}
+  m_LocalScale: {x: 2.491018, y: 2.491021, z: 2.4910219}
   m_Children:
   - {fileID: 937040803}
   - {fileID: 1193734456}
-  m_Father: {fileID: 453792392}
-  m_RootOrder: 0
+  m_Father: {fileID: 231572986}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1199958825
 MeshRenderer:
@@ -5553,32 +5567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24033bc223d01941bfbaeb65e14642d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &1199958828
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1199958823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300032, guid: cbac5c40bbb3a7b4d9c54abfbe7e3e9b, type: 3}
---- !u!65 &1199958829
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1199958823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 4.038709, y: 2.4804144, z: 1}
-  m_Center: {x: -0.015671255, y: 0, z: -0.1}
 --- !u!1 &1209082733
 GameObject:
   m_ObjectHideFlags: 0
@@ -10749,7 +10737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516467c0cc33b455eb83f16e56f8236a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 25
+  gravity: 30
 --- !u!4 &2131448812
 Transform:
   m_ObjectHideFlags: 0
