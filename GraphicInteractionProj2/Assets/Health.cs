@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
 	public void TakeDamage(float amount)
 	{
 		CurrentHealth -= amount;
-		print (CurrentHealth);
+		//print (CurrentHealth);
 		if (CurrentHealth <= 0f && !Dead) {
 			OnDeath ();
 		}
