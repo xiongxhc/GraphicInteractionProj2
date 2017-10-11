@@ -81,6 +81,8 @@ public class TankControl : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.None;
 		else
 			Cursor.lockState = CursorLockMode.Locked;
+
+		//updateHealth ();
 	}
 	void Keyboard_control(){
 
@@ -91,4 +93,7 @@ public class TankControl : MonoBehaviour {
 	public Transform getTransform(){
 		return transform;
 	}
+//	void updateHealth(){
+//
+//	}
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-	public float StartingHealth = 100f;          
+	public float StartingHealth = 50f;          
 	//private ParticleSystem ExplosionParticles;   
 	private float CurrentHealth;  
 	private bool Dead;            
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
 	public void TakeDamage(float amount)
 	{
 		CurrentHealth -= amount;
+		print (CurrentHealth);
 		if (CurrentHealth <= 0f && !Dead) {
 			OnDeath ();
 		}
