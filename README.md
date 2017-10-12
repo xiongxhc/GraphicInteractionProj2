@@ -16,3 +16,6 @@ Game Model: Artillery Combat (Tank & Missile launcher)
 * Legacy Cinematic Image Effects: https://www.assetstore.unity3d.com/en/#!/content/51515
 * Water Effect Fits For Lowpoly Style: https://www.assetstore.unity3d.com/en/#!/content/87810
 
+### OTHER
+
+* Desert background Amient Sound: https://www.youtube.com/watch?v=rWSWHkljU0c
