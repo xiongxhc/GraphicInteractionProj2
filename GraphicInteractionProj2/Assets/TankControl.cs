@@ -76,6 +76,7 @@ public class TankControl : MonoBehaviour {
 		//var position = transform.forward + distance * torqueDirection;
 		//rb.AddForceAtPosition (Vector3.up * 500000, position);
 //		transform.Rotate (0.0f,0.0f,rotateSpeed* Time.deltaTime * torqueDirection,Space.Self);
+		forceDirection = forceDirection == 0? 1:forceDirection;
 		rb.AddTorque (transform.forward * torque * torqueDirection * forceDirection * Time.deltaTime);
 		if (Input.GetKey(KeyCode.Escape))
 			Cursor.lockState = CursorLockMode.None;

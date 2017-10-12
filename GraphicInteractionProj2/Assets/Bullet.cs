@@ -22,18 +22,18 @@ public class Bullet : MonoBehaviour {
 	{	
 
 				Collider[] colliders = Physics.OverlapSphere(transform.position,ExplosionRadius,TankMask);
-				print ("Collsion Test : ");
-				print (colliders.Length);
+				//print ("Collsion Test : ");
+				//print (colliders.Length);
 
 				for (int i = 0; i < colliders.Length; i++) {
 					Rigidbody TargetRigidbody = colliders [i].GetComponent<Rigidbody> ();
 					if (!TargetRigidbody) {
-					print ("1");
+					//print ("1");
 						continue;
 					}
 					//TargetRigidbody.AddExplosionForce (ExplosionForce, transform.position, ExplosionRadius);
 					Health targetHealth = TargetRigidbody.GetComponent<Health> ();
-					print (targetHealth);
+					//print (targetHealth);
 
 					if (!targetHealth) {
 						continue;
