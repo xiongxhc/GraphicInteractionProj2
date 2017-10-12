@@ -40,12 +40,13 @@ Shader "Unlit/LavaShader"
 		};
 
 		void surf (Input IN, inout SurfaceOutput o) {
-		
+
 			fixed2 UVposition = IN.uv_MainTex;
 			
 			fixed MoveU = _MoveSpeedU * _Time;
 			fixed MoveV = _MoveSpeedV * _Time;
-			
+
+			// combine U and V movement 
 			UVposition += fixed2(MoveU, MoveV);
 		
 			o.Albedo = tex2D (_MainTex, UVposition).rgb;
