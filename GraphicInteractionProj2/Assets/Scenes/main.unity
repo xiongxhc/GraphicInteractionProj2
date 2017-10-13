@@ -1960,11 +1960,15 @@ MonoBehaviour:
   groundGrag: 2.3
   stationeryTorqueMutiplier: 1.5
   shellDamage: 20
+  gunFireParticle: {fileID: 198723129756616912, guid: 0ab55775e6458e944a57a5cf69c4b398,
+    type: 2}
   gunAiming: {fileID: 1693787220}
   leftTrack: {fileID: 1732929736}
   rightTrack: {fileID: 730831584}
   tankBody: {fileID: 155957662}
+  turretControl: {fileID: 781418492}
   shootScript: {fileID: 287522033}
+  shootingPointController: {fileID: 1238963086}
   rb: {fileID: 287522029}
 --- !u!54 &287522029
 Rigidbody:
@@ -2043,6 +2047,8 @@ MonoBehaviour:
   MaxLaunchForce: 300
   MaxChargeTime: 0.75
   FireTransform: {fileID: 1238963085}
+  turretControl: {fileID: 781418492}
+  shootingPointController: {fileID: 1238963086}
   ShootingAudio: {fileID: 0}
   FireClip: {fileID: 8300000, guid: cd6759421cf6b4f6b8bdaf0d0e72c9fc, type: 3}
   MovingAudio: {fileID: 0}
@@ -7316,6 +7322,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1238963085}
+  - component: {fileID: 1238963086}
   m_Layer: 0
   m_Name: ShootPoint
   m_TagString: Untagged
@@ -7336,6 +7343,17 @@ Transform:
   m_Father: {fileID: 860200481}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238963086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1238963084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35654f1c563d84bdfaefcaad8a17aa8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1242053155
 Prefab:
   m_ObjectHideFlags: 0
@@ -12949,10 +12967,25 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 77d5b98bafff6c745bc8122123ec4e59, type: 3}
+--- !u!54 &2077403273
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2077403271}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2084763611
 GameObject:
   m_ObjectHideFlags: 0

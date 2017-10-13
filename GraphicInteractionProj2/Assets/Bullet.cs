@@ -22,11 +22,12 @@ public class Bullet : MonoBehaviour {
 	public void setVelocity(Vector3 velocity){
 		GetComponent<Rigidbody> ().velocity = velocity;
 	}
-	private void OnTriggerEnter(Collider other)
-	{		
+	void OnCollisionEnter(Collision other)
+	{	
+		//Debug.Log ("Entering!");
 		Health targetHealth = other.gameObject.GetComponentInParent<Health>();
-		if (!targetHealth) return;
-		targetHealth.TakeDamage (MaxDamage);
+		if(targetHealth)targetHealth.TakeDamage (MaxDamage);
+		Destroy(Instantiate (ExplosionParticles, transform.position, Quaternion.identity).gameObject,3f);
 		Destroy (gameObject);
 	}
 		

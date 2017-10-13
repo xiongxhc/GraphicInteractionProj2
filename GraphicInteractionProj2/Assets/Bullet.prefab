@@ -112,7 +112,8 @@ MonoBehaviour:
   TankMask:
     serializedVersion: 2
     m_Bits: 1
-  ExplosionParticles: {fileID: 0}
+  ExplosionParticles: {fileID: 198000012831875596, guid: 843695ef5e6d39f458b99e399ccc09b1,
+    type: 2}
   MaxDamage: 10
   ExplosionForce: 2
   MaxLifeTime: 2
@@ -124,7 +125,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441419971221538}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
