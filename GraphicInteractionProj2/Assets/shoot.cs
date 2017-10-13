@@ -63,6 +63,6 @@ public class shoot : MonoBehaviour
 		Destroy (particleObject, 1f);
 		particleObject.GetComponent<Rigidbody>().velocity = GetComponentInParent<Rigidbody>().velocity;
 
-		GetComponents<AudioSource> () [1].PlayOneShot();
+		GetComponents<AudioSource> () [1].Play();
 	}
 }

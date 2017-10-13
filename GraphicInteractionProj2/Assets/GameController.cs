@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		npctanks = new List<TankControl>  ();
 		npctanks.Add(Instantiate (tank,new Vector3(20,20,0),Quaternion.Euler(-90,0,0)));
-		tank.gameObject.AddComponent<AudioListener> ();
+		//tank.gameObject.AddComponent<AudioListener> ();
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
