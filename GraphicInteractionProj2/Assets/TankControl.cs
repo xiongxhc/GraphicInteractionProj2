@@ -85,12 +85,13 @@ public class TankControl : MonoBehaviour {
 
 	}
 	public void accelerate(int forceDirection){
-		if (!isGrounded ())
-			return;
 		if(forceDirection!=0)
 			GetComponents<AudioSource> ()[0].pitch = Mathf.Lerp(GetComponent<AudioSource> ().pitch, engineMaxPitch + soundOffset,0.1f);
 		else 
 			GetComponents<AudioSource> ()[0].pitch = Mathf.Lerp(GetComponent<AudioSource> ().pitch, engineMinPitch + soundOffset,0.1f);
+		if (!isGrounded ())
+			return;
+
 		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime);
 	}
 	public void turn(int torqueDirection,int forceDirection){
