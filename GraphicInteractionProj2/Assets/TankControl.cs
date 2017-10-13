@@ -38,7 +38,7 @@ public class TankControl : MonoBehaviour {
 	void OnCollisionExit(Collision collision){
 	}
 	bool isGrounded(){
-		return leftTrackGrounded && rightTrackGrounded;
+		return leftTrackGrounded || rightTrackGrounded;
 	}
 	void FixedUpdate(){
 		if (isGrounded ()) {
