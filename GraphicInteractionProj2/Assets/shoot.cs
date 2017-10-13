@@ -62,5 +62,7 @@ public class shoot : MonoBehaviour
 		GameObject particleObject = Instantiate (gunFireParticle, shootingPointController.getTransform ().position, Quaternion.identity).gameObject;
 		Destroy (particleObject, 1f);
 		particleObject.GetComponent<Rigidbody>().velocity = GetComponentInParent<Rigidbody>().velocity;
+
+		GetComponents<AudioSource> () [1].Play();
 	}
 }

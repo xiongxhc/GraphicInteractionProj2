@@ -10,6 +10,10 @@ public class TankControl : MonoBehaviour {
 	public float groundGrag = 2.3f;
 	public float stationeryTorqueMutiplier = 1.5f;
 	public float shellDamage = 20;
+	public float engineMaxPitch = 1.2f;
+	public float engineMinPitch = 0.4f;
+	public float enginePitchRandRange = 0.3f;
+	private float soundOffset;
 	public ParticleSystem gunFireParticle;
 	private float power;
 	private float torque;
@@ -33,6 +37,7 @@ public class TankControl : MonoBehaviour {
 		torque = torqueKN * 1000;
 		rb.centerOfMass = new Vector3 (0,0,-5);
 		shootScript.setParticle (gunFireParticle);
+		soundOffset = Random.Range (-enginePitchRandRange, enginePitchRandRange);
 	}
 	public void setDamage(float Damage){
 		shellDamage = Damage;
@@ -76,11 +81,16 @@ public class TankControl : MonoBehaviour {
 		}
 		// 
 		rb.maxAngularVelocity = maxRotateSpeed;
+		// Audio Control
+
 	}
 	public void accelerate(int forceDirection){
 		if (!isGrounded ())
 			return;
-
+		if(forceDirection!=0)
+			GetComponents<AudioSource> ()[0].pitch = Mathf.Lerp(GetComponent<AudioSource> ().pitch, engineMaxPitch + soundOffset,0.1f);
+		else 
+			GetComponents<AudioSource> ()[0].pitch = Mathf.Lerp(GetComponent<AudioSource> ().pitch, engineMinPitch + soundOffset,0.1f);
 		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime);
 	}
 	public void turn(int torqueDirection,int forceDirection){
@@ -95,6 +105,9 @@ public class TankControl : MonoBehaviour {
 	}
 	public Transform getTransform(){
 		return transform;
+	}
+	void Update(){
+		
 	}
 //	void updateHealth(){
 //

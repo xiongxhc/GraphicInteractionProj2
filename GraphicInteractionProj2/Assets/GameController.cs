@@ -10,12 +10,14 @@ public class GameController : MonoBehaviour {
 	public string fireButton = "Fire";
 	private float randTimer = 0;
 	private Vector3 randVector = new Vector3(0,0,0);
+
 	private List<TankControl> npctanks;
 	[Tooltip ("TankControl")] public TankControl playerTankControl;
 	// Use this for initialization
 	void Start () {
 		npctanks = new List<TankControl>  ();
 		npctanks.Add(Instantiate (tank,new Vector3(20,20,0),Quaternion.Euler(-90,0,0)));
+		tank.gameObject.AddComponent<AudioListener> ();
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
@@ -23,7 +25,6 @@ public class GameController : MonoBehaviour {
 			randVector = new Vector3 (Random.Range (-randRange, randRange), Random.Range (-randRange, randRange), Random.Range (-randRange, randRange));
 			randTimer = randRefreshTimerSeconds;
 		}
-
 	}
 	// Update is called once per frame
 	void Update () {
