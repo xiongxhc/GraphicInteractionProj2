@@ -6,12 +6,13 @@ public class CameraScrollControl : MonoBehaviour {
 	public float stepSize = 60f;
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
 	private float pivitAngle;
+	private float z_diff;
 	// Use this for initialization
 	void Start () {
 		// calculate initial pivit angle
 		var diffToCenter = transform.position - thirdPersonCam.getTransform().position;
 		pivitAngle = -Mathf.Atan (diffToCenter.y/diffToCenter.x)*Mathf.Rad2Deg;
-
+		z_diff = transform.localPosition.z;
 	}
 	
 	// Update is called once per frame

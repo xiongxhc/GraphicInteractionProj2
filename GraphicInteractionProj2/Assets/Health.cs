@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -9,6 +9,9 @@ public class Health : MonoBehaviour
 	//private ParticleSystem ExplosionParticles;   
 	private float CurrentHealth;  
 	private bool Dead;            
+	public Slider Slider;                        
+	public Image FillImage;                      
+	public Color FullHealthColor = Color.green;  
 
 	private void Awake()
 	{
@@ -22,14 +25,24 @@ public class Health : MonoBehaviour
 	{
 		CurrentHealth = StartingHealth;
 		Dead = false;
+		SetHealthUI();
+
 
 	}
 
+	private void SetHealthUI()
+	{
+		// Adjust the value and colour of the slider.
+		Slider.value = CurrentHealth;
+		FillImage.color = FullHealthColor;
+	}
 
 	public void TakeDamage(float amount)
 	{
 		CurrentHealth -= amount;
-		//print (CurrentHealth);
+		SetHealthUI();
+//		print ("Take damage: ");
+//		print (CurrentHealth);
 		if (CurrentHealth <= 0f && !Dead) {
 			OnDeath ();
 		}

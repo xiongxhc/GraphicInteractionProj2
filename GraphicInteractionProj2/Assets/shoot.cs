@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class shoot : MonoBehaviour
 {
-	public Rigidbody Shell;            
+	public Bullet Shell;            
 	public float MinLaunchForce = 15f; 
 	public float MaxLaunchForce = 30f; 
 	public float MaxChargeTime = 0.75f;
@@ -14,8 +14,13 @@ public class shoot : MonoBehaviour
 	private string FireButton;         
 	private float CurrentLaunchForce;  
 	private float ChargeSpeed;         
-	private bool Fired;                
 
+	public AudioSource ShootingAudio;  
+	public AudioClip FireClip; 
+	public AudioSource MovingAudio;  
+	public AudioClip MovingClip;  
+	[Tooltip ("TankControl")] public TankControl tank;
+	public float ShootingTimePeriod = 1.0f;
 
 	private void OnEnable()
 	{
@@ -25,23 +30,31 @@ public class shoot : MonoBehaviour
 
 	private void Start()
 	{
+		ShootingTimePeriod = 0;
 		FireButton = "Fire";
 	}
 
 
 	private void Update()
 	{
-		if (Input.GetButtonDown (FireButton)) {
-			Fire ();
+		ShootingTimePeriod -= Time.deltaTime;
+		if (ShootingTimePeriod <= 0.0f) {
+			ShootingTimePeriod = 0;
+			//print ("Fire");
+//			MovingAudio.clip = MovingClip;
+//			MovingAudio.Play ();
 		}
 	}
 
 
-	private void Fire()
+	public void Fire()
 	{
-		Fired = true;
-		Rigidbody shellInstance = Instantiate (Shell, FireTransform.position, FireTransform.rotation) as Rigidbody;
-		shellInstance.velocity = CurrentLaunchForce * FireTransform.forward;
+		if (ShootingTimePeriod > 0)
+			return;
+		Bullet shellInstance = Instantiate (Shell, FireTransform.position, FireTransform.rotation);
+		shellInstance.setVelocity(CurrentLaunchForce * FireTransform.forward + tank.GetComponent<Rigidbody>().velocity);
+		shellInstance.setDamage (tank.shellDamage);
 		CurrentLaunchForce = MinLaunchForce;
+		ShootingTimePeriod = 1.0f;
 	}
 }

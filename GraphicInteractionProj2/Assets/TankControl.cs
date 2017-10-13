@@ -9,6 +9,7 @@ public class TankControl : MonoBehaviour {
 	public float airDrag = 0.1f;
 	public float groundGrag = 2.3f;
 	public float stationeryTorqueMutiplier = 1.5f;
+	public float shellDamage = 20;
 	private float power;
 	private float torque;
 	private bool leftTrackGrounded;
@@ -17,6 +18,7 @@ public class TankControl : MonoBehaviour {
 	[Tooltip ("TankTrack")] public TankTrack leftTrack;
 	[Tooltip ("TankTrack")] public TankTrack rightTrack;
 	[Tooltip ("TankBody")] public TankBody tankBody;
+	[Tooltip ("shoot")] public shoot shootScript;
 	// Use this for initialization
 	public Rigidbody rb;
 	void Start () {
@@ -27,8 +29,14 @@ public class TankControl : MonoBehaviour {
 		torque = torqueKN * 1000;
 		rb.centerOfMass = new Vector3 (0,0,-5);
 	}
+	public void setDamage(float Damage){
+		shellDamage = Damage;
+	}
 	public void AimTarget(Vector3 target){
 		gunAiming.setAimingTarget (target);
+	}
+	public void Fire(){
+		shootScript.Fire ();
 	}
 
 	// Update is called once per frame

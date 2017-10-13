@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour {
 	public TankControl tank;
 	public float randRefreshTimerSeconds = 1;
 	public float randRange = 5;
+	public string fireButton = "Fire";
 	private float randTimer = 0;
 	private Vector3 randVector = new Vector3(0,0,0);
 	private List<TankControl> npctanks;
@@ -15,7 +16,6 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		npctanks = new List<TankControl>  ();
 		npctanks.Add(Instantiate (tank,new Vector3(20,20,0),Quaternion.Euler(-90,0,0)));
-
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
@@ -43,11 +43,16 @@ public class GameController : MonoBehaviour {
 			forceDirection = 1;
 		if (Input.GetKey (KeyCode.S))
 			forceDirection = -1;
+
+		if (Input.GetButtonDown (fireButton)) {
+			playerTankControl.Fire ();
+		}
 		playerTankControl.accelerate (forceDirection);
 		playerTankControl.turn (torqueDirection, forceDirection);
 
 		foreach(TankControl npctank in npctanks){
 			npctank.AimTarget (playerTankControl.getWorldPosition() + randVector);
+			npctank.Fire ();
 		}
 	}
 
