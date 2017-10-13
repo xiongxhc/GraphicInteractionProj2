@@ -11,12 +11,14 @@ public class GunAiming : MonoBehaviour {
 	private float gunRotYOffset;
 	public float gunElevation = 20;
 	public float gunDepression = -15;
+	private Vector3 aim_target = new Vector3(0,0,0); 
 	[Tooltip ("TankBody")] public TankBody tankbody;
 	[Tooltip ("CameraScrollControl")] public CameraScrollControl cameraScrollControl;
 	[Tooltip ("TurretControl")] public TurretControl turretControl;
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
-	[Tooltip ("AimCube")] public AimCube aimCube;
+
 	[Tooltip ("TankControl")] public TankControl tankControl;
+	[Tooltip ("TurretColliderControl")] public TurretColliderControl turretColliderControl;
 
 	void Start () {
 		gunRotYOffset = transform.localRotation.eulerAngles.y;
@@ -38,14 +40,11 @@ public class GunAiming : MonoBehaviour {
 	Vector3 RotateAroundPoint(Vector3 originLocation, Vector3 rotatePiviot, Vector3 angles){
 		return  Quaternion.Euler (angles) * (originLocation - rotatePiviot) + rotatePiviot; 
 	}
-	// calcula angular difference between camera and turret orientation
+	public void setAimingTarget(Vector3 targetPosition){
+		aim_target = targetPosition;
+	}
 	void AngleEulerCalc(){
-		//Vector3 screen_target = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane)); 
-		var pivit = cameraScrollControl.getPivitPoint ();
-		Vector3 aim_target = pivit * 2 - cameraScrollControl.getTransform().position;
-		//aim_target = RotateAroundPoint (screen_target, turretControl.getTransform ().position, new Vector3 (0,180,0));
-		//p = c.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, c.nearClipPlane));
-		aimCube.getTransform ().position = aim_target;
+		//aimCube.getTransform ().position = aim_target;
 		// Turret Rotation
 		var turret_curr_rotation = turretControl.getTransform().localRotation;
 		turretControl.getTransform ().LookAt (aim_target);
@@ -62,6 +61,7 @@ public class GunAiming : MonoBehaviour {
 		transform.localRotation = Quaternion.Euler (0,Mathf.Clamp(transform.localRotation.eulerAngles.y,gunRotYOffset-gunElevation,gunRotYOffset-gunDepression),0);
 		//transform.localRotation = Quaternion.Euler (0,transform.localRotation.eulerAngles.y,0);
 		transform.localRotation = Quaternion.RotateTowards (gun_priv_rot,transform.localRotation,gunElevSpeed);
+		turretColliderControl.getTransform ().localRotation = turretControl.getTransform ().localRotation;
 	}
 
 	// Update is called once per frame

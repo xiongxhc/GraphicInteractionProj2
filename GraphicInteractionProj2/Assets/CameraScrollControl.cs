@@ -31,6 +31,9 @@ public class CameraScrollControl : MonoBehaviour {
 		var y = thirdPersonCam.getWorldPosition ().y + (transform.position - thirdPersonCam.getWorldPosition ()).magnitude * Mathf.Sin (pivitAngle);
 		return new Vector3 (thirdPersonCam.getWorldPosition ().x,y,thirdPersonCam.getWorldPosition ().z);
 	}
+	public Vector3 getAimTarget(){
+		return getPivitPoint () * 2 - transform.position;
+	}
 	public float getDiffYTOCenter(){
 		// try calculate elevation diff
 		// difference: y axis is O, x axis is a. tan(theta) = O/A, theta = atan(O/A)

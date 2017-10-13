@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretControl : MonoBehaviour {
-
+public class TurretColliderControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 	}
+	
 	// Update is called once per frame
 	void Update () {
-
+		
 	}
+
 	public Transform getTransform(){
 		return transform;
 	}
 
-	void Mouse_Update(){
-
-
-
-	}
 }

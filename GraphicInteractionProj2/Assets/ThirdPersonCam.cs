@@ -8,8 +8,9 @@ public class ThirdPersonCam : MonoBehaviour {
 	public float mouseSensetivity = 5f;
 	[Tooltip ("GunCamera")] public GunCamera guncamerascript;
 	[Tooltip ("TankControl")] public TankControl tankControl;
-	[Tooltip ("TurretControl")] public TurretControl urretControl;
 
+	[Tooltip ("CameraScrollControl")] public CameraScrollControl cameraScrollControl;
+	[Tooltip ("AimCube")] public AimCube aimCube;
 	// Use this for initialization
 	void Start () {
 	}
@@ -39,6 +40,9 @@ public class ThirdPersonCam : MonoBehaviour {
 		//
 		transform.Rotate(Vector3.up * Input.GetAxis ("Mouse X") * mouseSensetivity, Space.World);
 		transform.Rotate(Vector3.up * Input.GetAxis ("Mouse Y") * mouseSensetivity * -1);
+		tankControl.AimTarget (cameraScrollControl.getAimTarget());
+		aimCube.getTransform ().position = cameraScrollControl.getAimTarget ();
+		//Debug.Log (cameraScrollControl.getAimTarget ());
 	}
 
 }

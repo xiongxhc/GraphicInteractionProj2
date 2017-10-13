@@ -139,7 +139,8 @@ MonoBehaviour:
   mouseSensetivity: 5
   guncamerascript: {fileID: 495639681}
   tankControl: {fileID: 287522028}
-  urretControl: {fileID: 0}
+  cameraScrollControl: {fileID: 1706106420}
+  aimCube: {fileID: 1571469201}
 --- !u!4 &692183
 Transform:
   m_ObjectHideFlags: 0
@@ -1840,7 +1841,7 @@ GameObject:
   - component: {fileID: 287522033}
   - component: {fileID: 287522032}
   m_Layer: 0
-  m_Name: tank
+  m_Name: PlayerTank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1863,6 +1864,7 @@ MonoBehaviour:
   airDrag: 0.1
   groundGrag: 2.3
   stationeryTorqueMutiplier: 1.5
+  gunAiming: {fileID: 1693787220}
   leftTrack: {fileID: 1732929736}
   rightTrack: {fileID: 730831584}
   tankBody: {fileID: 155957662}
@@ -2344,6 +2346,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 367489227}
+  - component: {fileID: 367489229}
   - component: {fileID: 367489228}
   m_Layer: 0
   m_Name: TurretCollider
@@ -2359,7 +2362,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 367489226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.436096, y: 0.2455595, z: 1.824193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 287522030}
@@ -2375,8 +2378,19 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.406778, y: 6.865689, z: 3.1697428}
-  m_Center: {x: -5.4402647, y: 0.44233418, z: 1.6082981}
+  m_Size: {x: 9.8, y: 6.2752256, z: 2.5}
+  m_Center: {x: -0.1, y: 0, z: -0.5}
+--- !u!114 &367489229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 367489226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b50e328a68944205b06f533533212c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &377219687 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 139602, guid: d6ef9e6786902824d9015c4b743a3ae6, type: 2}
@@ -2772,6 +2786,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 30
+  tank: {fileID: 287522028}
+  randRefreshTimerSeconds: 1
+  randRange: 5
+  playerTankControl: {fileID: 287522028}
 --- !u!4 &443602968
 Transform:
   m_ObjectHideFlags: 0
@@ -9838,8 +9856,8 @@ MonoBehaviour:
   cameraScrollControl: {fileID: 1706106420}
   turretControl: {fileID: 781418492}
   thirdPersonCam: {fileID: 692182}
-  aimCube: {fileID: 1571469201}
   tankControl: {fileID: 287522028}
+  turretColliderControl: {fileID: 367489229}
 --- !u!23 &1693787221
 MeshRenderer:
   m_ObjectHideFlags: 0

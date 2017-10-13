@@ -13,6 +13,7 @@ public class TankControl : MonoBehaviour {
 	private float torque;
 	private bool leftTrackGrounded;
 	private bool rightTrackGrounded;
+	[Tooltip ("GunAiming")] public GunAiming gunAiming;
 	[Tooltip ("TankTrack")] public TankTrack leftTrack;
 	[Tooltip ("TankTrack")] public TankTrack rightTrack;
 	[Tooltip ("TankBody")] public TankBody tankBody;
@@ -26,7 +27,10 @@ public class TankControl : MonoBehaviour {
 		torque = torqueKN * 1000;
 		rb.centerOfMass = new Vector3 (0,0,-5);
 	}
-	
+	public void AimTarget(Vector3 target){
+		gunAiming.setAimingTarget (target);
+	}
+
 	// Update is called once per frame
 
 	void OnCollisionStay(Collision collision){
@@ -58,36 +62,19 @@ public class TankControl : MonoBehaviour {
 		// 
 		rb.maxAngularVelocity = maxRotateSpeed;
 	}
-	void Update() {
-		//Debug.Log (torque);
+	public void accelerate(int forceDirection){
 		if (!isGrounded ())
 			return;
-		int forceDirection = 0;
-		if (Input.GetKey (KeyCode.W))
-			forceDirection = 1;
-		if (Input.GetKey (KeyCode.S))
-			forceDirection = -1;
+
 		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime);
-		int torqueDirection = 0;
-		if (Input.GetKey (KeyCode.A)) 
-			torqueDirection = -1;
-		if (Input.GetKey (KeyCode.D))
-			torqueDirection = 1;
-		//var position = transform.forward + distance * torqueDirection;
-		//rb.AddForceAtPosition (Vector3.up * 500000, position);
-//		transform.Rotate (0.0f,0.0f,rotateSpeed* Time.deltaTime * torqueDirection,Space.Self);
+	}
+	public void turn(int torqueDirection,int forceDirection){
+		if (!isGrounded ())
+			return;
 		forceDirection = forceDirection == 0? 1:forceDirection;
 		rb.AddTorque (transform.forward * torque * torqueDirection * forceDirection * Time.deltaTime);
-		if (Input.GetKey(KeyCode.Escape))
-			Cursor.lockState = CursorLockMode.None;
-		else
-			Cursor.lockState = CursorLockMode.Locked;
-
-		//updateHealth ();
 	}
-	void Keyboard_control(){
 
-	}
 	public Vector3 getWorldPosition(){
 		return transform.position;
 	}
