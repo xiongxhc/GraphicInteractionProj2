@@ -2139,7 +2139,7 @@ MonoBehaviour:
   MovingAudio: {fileID: 0}
   MovingClip: {fileID: 0}
   tank: {fileID: 287522028}
-  ShootingTimePeriod: 1
+  ShootingTimePeriod: 5
 --- !u!95 &287522034
 Animator:
   serializedVersion: 3
