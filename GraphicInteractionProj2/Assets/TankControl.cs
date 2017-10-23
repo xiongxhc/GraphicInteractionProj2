@@ -13,12 +13,14 @@ public class TankControl : MonoBehaviour {
 	public float engineMaxPitch = 1.2f;
 	public float engineMinPitch = 0.4f;
 	public float enginePitchRandRange = 0.3f;
+	public float powerDirectionMultipler = 0.6f;
 	private float soundOffset;
 	public ParticleSystem gunFireParticle;
 	private float power;
 	private float torque;
 	private bool leftTrackGrounded;
 	private bool rightTrackGrounded;
+	private float inclineOffset;
 	[Tooltip ("GunAiming")] public GunAiming gunAiming;
 	[Tooltip ("TankTrack")] public TankTrack leftTrack;
 	[Tooltip ("TankTrack")] public TankTrack rightTrack;
@@ -36,6 +38,7 @@ public class TankControl : MonoBehaviour {
 		power = powerKN * 1000;
 		torque = torqueKN * 1000;
 		rb.centerOfMass = new Vector3 (0,0,-5);
+		inclineOffset = transform.localRotation.eulerAngles.x;
 		shootScript.setParticle (gunFireParticle);
 		soundOffset = Random.Range (-enginePitchRandRange, enginePitchRandRange);
 	}
@@ -79,9 +82,26 @@ public class TankControl : MonoBehaviour {
 			leftTrackGrounded = false;
 			rightTrackGrounded = false;
 		}
+		foreach (Transform child in transform) {
+			var localVel = transform.InverseTransformDirection(rb.velocity);
+			var forwordSpeed = localVel.x;
+			var rotateSpeed = rb.angularVelocity.y;
+			if(child.name.Contains("Wheel")){
+				// get diameter
+				var length = child.GetComponent<MeshRenderer> ().bounds.extents.x;
+				var c = 2 * Mathf.PI * length;
+				var rotationDirection = child.name.Contains ("Left") ? 1 : -1;
+				// calculate Rotation per second
+				var wheelSpeed = forwordSpeed + -rotateSpeed * rotationDirection * 10;
+				var rps = wheelSpeed / c;
+				// apply rotation
+				child.Rotate (Vector3.forward,wheelSpeed * Time.deltaTime*10);
+			}
+		}
+		
 		// 
 		rb.maxAngularVelocity = maxRotateSpeed;
-		// Audio Control
+
 
 	}
 	public void accelerate(int forceDirection){
@@ -92,7 +112,10 @@ public class TankControl : MonoBehaviour {
 		if (!isGrounded ())
 			return;
 
-		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime);
+		var DirectionMultipler = forceDirection == -1 ? powerDirectionMultipler : 1;
+//		var currentPower = power * forceDirection * Time.deltaTime * DirectionMultipler;
+//		var forwardPower = Mathf.Cos(getIncline()*Mathf.Deg2Rad) * currentPower; 
+		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime * DirectionMultipler);
 	}
 	public void turn(int torqueDirection,int forceDirection){
 		if (!isGrounded ())
@@ -107,8 +130,11 @@ public class TankControl : MonoBehaviour {
 	public Transform getTransform(){
 		return transform;
 	}
+	public float getIncline(){
+		return transform.localEulerAngles.x - inclineOffset;
+	}
 	void Update(){
-		
+
 	}
 //	void updateHealth(){
 //

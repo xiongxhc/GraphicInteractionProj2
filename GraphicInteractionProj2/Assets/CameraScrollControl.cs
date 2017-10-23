@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraScrollControl : MonoBehaviour {
 	public float stepSize = 60f;
+	public float aimDistanceMultipler = 100f;
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
 	private float pivitAngle;
 	private float z_diff;
@@ -33,7 +34,9 @@ public class CameraScrollControl : MonoBehaviour {
 		return new Vector3 (thirdPersonCam.getWorldPosition ().x,y,thirdPersonCam.getWorldPosition ().z);
 	}
 	public Vector3 getAimTarget(){
-		return getPivitPoint () * 2 - transform.position;
+		var pivit = getPivitPoint();
+		var deltaUnit = (pivit - transform.position).normalized;
+		return getPivitPoint () + deltaUnit * aimDistanceMultipler;
 	}
 	public float getDiffYTOCenter(){
 		// try calculate elevation diff

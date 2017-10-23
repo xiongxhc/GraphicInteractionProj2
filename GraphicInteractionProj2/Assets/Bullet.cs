@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour {
 	public ParticleSystem ExplosionParticles;       
 	public float MaxDamage = 50f;                  
 	public float ExplosionForce = 2.0f;            
-	public float MaxLifeTime = 2f;                  
+	public float MaxLifeTime = 10f;                  
 	public float ExplosionRadius = 3f;              
 
 
