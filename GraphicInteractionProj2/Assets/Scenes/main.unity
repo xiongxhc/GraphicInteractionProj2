@@ -10591,6 +10591,7 @@ MonoBehaviour:
   stepSize: 60
   aimDistanceMultipler: 1000
   thirdPersonCam: {fileID: 692182}
+  gunCamera: {fileID: 495639681}
 --- !u!81 &1706106421
 AudioListener:
   m_ObjectHideFlags: 0

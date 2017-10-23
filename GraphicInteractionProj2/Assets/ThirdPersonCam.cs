@@ -15,11 +15,20 @@ public class ThirdPersonCam : MonoBehaviour {
 	[Tooltip ("AimCube")] public AimCube aimCube;
 	// Use this for initialization
 	void Start () {
+
 	}
 	void OnGUI() {
-//		float xMin = (Screen.width / 2) - (crosshairOuter.width / 2);
-//		float yMin = (Screen.height / 2) - (crosshairOuter.height / 2);
-//		GUI.DrawTexture(new Rect(xMin, yMin, crosshairOuter.width, crosshairOuter.height), crosshairOuter);
+		if (cameraScrollControl.GetComponent<Camera>().enabled) {
+			float x = (Screen.width / 2) - (crosshairOuter.width / 2);
+			float y = (Screen.height / 2) - (crosshairOuter.height / 2);
+			GUI.DrawTexture (new Rect (x, y, crosshairOuter.width, crosshairOuter.height), crosshairOuter);
+		} else {
+			Vector3 screenPos = cameraScrollControl.getAimTargetGUIFirstPerson();
+			float x = screenPos.x - (crosshairOuter.width / 2);
+			float y = Screen.height - screenPos.y - (crosshairOuter.height / 2);
+
+			GUI.DrawTexture (new Rect (x, y, crosshairOuter.width, crosshairOuter.height), crosshairOuter);
+		}
 //		GUI.Label (new Rect (10, 40, 1000, 200), "Local camera rotaion:" + transform.localEulerAngles);
 //		GUI.Label (new Rect (10, 80, 1000, 200), "World camera rotaion:" + transform.rotation.eulerAngles);
 	}

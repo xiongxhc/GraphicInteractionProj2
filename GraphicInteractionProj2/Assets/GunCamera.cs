@@ -12,7 +12,9 @@ public class GunCamera : MonoBehaviour {
 		this_camera = GetComponent<Camera> ();
 		this_camera.enabled = false;
 	}
-	
+	public Camera getCam(){
+		return this_camera;	
+	}
 	public void GunCamera_toggle(){
 		main_camera.enabled = !main_camera.enabled;
 		this_camera.enabled = !this_camera.enabled;

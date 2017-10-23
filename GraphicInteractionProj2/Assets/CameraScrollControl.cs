@@ -6,14 +6,17 @@ public class CameraScrollControl : MonoBehaviour {
 	public float stepSize = 60f;
 	public float aimDistanceMultipler = 100f;
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
+	[Tooltip ("GunCamera")] public GunCamera gunCamera;
 	private float pivitAngle;
 	private float z_diff;
+	private Camera cam;
 	// Use this for initialization
 	void Start () {
 		// calculate initial pivit angle
 		var diffToCenter = transform.position - thirdPersonCam.getTransform().position;
 		pivitAngle = -Mathf.Atan (diffToCenter.y/diffToCenter.x)*Mathf.Rad2Deg;
 		z_diff = transform.localPosition.z;
+		cam = GetComponent<Camera> ();
 	}
 	
 	// Update is called once per frame
@@ -37,6 +40,12 @@ public class CameraScrollControl : MonoBehaviour {
 		var pivit = getPivitPoint();
 		var deltaUnit = (pivit - transform.position).normalized;
 		return getPivitPoint () + deltaUnit * aimDistanceMultipler;
+	}
+	public Vector3 getAimTargetGUIThirdPerson(){
+		return cam.WorldToScreenPoint (getAimTarget ());
+	}
+	public Vector3 getAimTargetGUIFirstPerson(){
+		return gunCamera.getCam().WorldToScreenPoint (getAimTarget ());
 	}
 	public float getDiffYTOCenter(){
 		// try calculate elevation diff
