@@ -48,6 +48,9 @@ public class TankControl : MonoBehaviour {
 	public void AimTarget(Vector3 target){
 		gunAiming.setAimingTarget (target);
 	}
+	public TurretControl getTurretControl(){
+		return turretControl;
+	}
 	public void Fire(){
 		shootScript.Fire ();
 		if (gunFireParticle == null)

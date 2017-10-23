@@ -25,7 +25,7 @@ public class ThirdPersonCam : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		transform.position = tankControl.getWorldPosition ();
+		transform.position = tankControl.getTurretControl().getTransform().position;
 		if (Input.GetKeyUp (KeyCode.Space)) {
 			guncamerascript.GunCamera_toggle ();
 		}
