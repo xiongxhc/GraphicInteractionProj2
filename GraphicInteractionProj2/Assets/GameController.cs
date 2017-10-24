@@ -24,6 +24,10 @@ public class GameController : MonoBehaviour {
 	private List<SpawnpointScript> spawnPoints;
 	[Tooltip ("TankNavS")] public TankNavS playerTank;
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
+
+	[Tooltip ("EndGameCanvasScript")] public EndGameCanvasScript endGameCanvasScript;
+	[Tooltip ("GameCanvasScript")] public GameCanvasScript gameCanvasScript;
+
 	// Use this for initialization
 	void Start () {
 		npctanks = new List<TankNavS>  ();
@@ -34,10 +38,15 @@ public class GameController : MonoBehaviour {
 		spawnPoints.Add(Spawnpoint2);
 		spawnPoints.Add(Spawnpoint3);
 		spawnPoints.Add(Spawnpoint4);
+		endGameCanvasScript.gameObject.SetActive (false);
+		gameCanvasScript.gameObject.SetActive (true);
 		waveSpawn ();
 	}
 	void OnGUI() {
 		
+	}
+	public int getWaveCount(){
+		return waveCount;
 	}
 	private bool checkWaveComplete(){
 		foreach (SpawnpointScript s in spawnPoints) {
@@ -53,17 +62,28 @@ public class GameController : MonoBehaviour {
 		waveCanvasControl.gameObject.SetActive (false);
 		waitingCanvas = false;
 		waveStarted = true;
+		gameCanvasScript.gameObject.SetActive (true);
 		foreach (SpawnpointScript s in spawnPoints) {
 			s.startSpawn = true;
 		}
 	}
 	public void tankDestroy(TankNavS tank){
 		if (tank.name.Equals ("NavTank")) {
-			//gameover event
+			endGame ();
 			return;
 		}
 		npctanks.Remove (tank);
 		Money += MoneyMultiplier;
+	}
+	public void endGame(){
+		//gameover event
+		gameCanvasScript.gameObject.SetActive (false);
+		endGameCanvasScript.gameObject.SetActive (true);
+		waitingCanvas = true;
+		Cursor.lockState = CursorLockMode.None;
+		thirdPersonCam.showCrosshair = false;
+		thirdPersonCam.cameraMove = false;
+		waveCanvasControl.gameObject.SetActive (false);
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
@@ -79,6 +99,7 @@ public class GameController : MonoBehaviour {
 		thirdPersonCam.cameraMove = false;
 		Cursor.lockState = CursorLockMode.None;
 		waveCanvasControl.gameObject.SetActive (true);
+		gameCanvasScript.gameObject.SetActive (false);
 		waveCanvasControl.EnermyArmorText.text = Spawnpoint1.spawnArmor.ToString();
 		waveCanvasControl.EnermyFireCooldownText.text = Spawnpoint1.spawnFireCooldown.ToString();
 		waveCanvasControl.EnermyFirepowerText.text = Spawnpoint1.spawnFirepower.ToString();
