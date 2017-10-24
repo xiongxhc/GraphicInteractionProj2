@@ -89,14 +89,13 @@ public class TankNavS : MonoBehaviour {
 			}
 		}
 		rb.maxAngularVelocity = maxRotateSpeed;
-		// kill drift
+
 		var localVelocity = transform.InverseTransformDirection (rb.velocity);
+		// kill drift
 		localVelocity.z = 0;
-		rb.velocity = transform.TransformDirection (localVelocity);
 		// eliminate overspeed
-		if (rb.velocity.magnitude > maxVelocity) {
-			rb.AddForce (-rb.velocity.normalized * (maxVelocity - rb.velocity.magnitude));
-		}
+		localVelocity.x = localVelocity.x > maxVelocity ? maxVelocity : localVelocity.x;
+		rb.velocity = transform.TransformDirection (localVelocity);
 	}
 	// Update is called once per frame
 	void Update () {
@@ -107,7 +106,7 @@ public class TankNavS : MonoBehaviour {
 			GetComponents<AudioSource> ()[0].pitch = Mathf.Lerp(GetComponent<AudioSource> ().pitch, engineMaxPitch + soundOffset,0.1f);
 		else 
 			GetComponents<AudioSource> ()[0].pitch = Mathf.Lerp(GetComponent<AudioSource> ().pitch, engineMinPitch + soundOffset,0.1f);
-		if (!isGrounded() && rb.velocity.magnitude > maxVelocity)
+		if (!isGrounded() || rb.velocity.magnitude > maxVelocity)
 			return;
 		var DirectionMultipler = forceDirection == -1 ? powerDirectionMultipler : 1;
 		rb.AddForce(transform.right * power * forceDirection * Time.deltaTime * DirectionMultipler);

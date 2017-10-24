@@ -1948,7 +1948,6 @@ GameObject:
   - component: {fileID: 287522036}
   - component: {fileID: 287522035}
   - component: {fileID: 287522033}
-  - component: {fileID: 287522032}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -1986,21 +1985,6 @@ Transform:
   m_Father: {fileID: 2119076240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 0}
---- !u!114 &287522032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 287522027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290747312b14c43c6945fe918f394b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartingHealth: 100
-  Slider: {fileID: 494850410}
-  FillImage: {fileID: 1907185737}
-  FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!114 &287522033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4275,7 +4259,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 179efd2f17abe4f0988ebb21238a9e7c, type: 2}
     - target: {fileID: 100000, guid: e1b5b8672dff41246bc7c1dd08ff49ae, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e1b5b8672dff41246bc7c1dd08ff49ae, type: 3}
       propertyPath: m_NavMeshLayer
@@ -7479,7 +7463,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 314f222691d9fcb47a6efce57ba99b5a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 314f222691d9fcb47a6efce57ba99b5a, type: 3}
       propertyPath: m_NavMeshLayer
@@ -13947,6 +13931,7 @@ GameObject:
   - component: {fileID: 2119076243}
   - component: {fileID: 2119076245}
   - component: {fileID: 2119076244}
+  - component: {fileID: 2119076246}
   m_Layer: 0
   m_Name: NavTank
   m_TagString: Untagged
@@ -14009,8 +13994,8 @@ MonoBehaviour:
   powerKN: 200
   maxRotateSpeed: 1.5
   torqueKN: 1500
-  airDrag: 0.05
-  groundGrag: 0.15
+  airDrag: 0.2
+  groundGrag: 0.05
   stationeryTorqueMutiplier: 10
   powerDirectionMultipler: 0.8
   engineMaxPitch: 0.8
@@ -14192,6 +14177,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &2119076246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2119076239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290747312b14c43c6945fe918f394b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 100
+  tankControl: {fileID: 287522035}
+  tankNavS: {fileID: 2119076242}
+  gameController: {fileID: 443602967}
+  Slider: {fileID: 494850410}
+  FillImage: {fileID: 1907185737}
+  FullHealthColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1001 &2119120700
 Prefab:
   m_ObjectHideFlags: 0

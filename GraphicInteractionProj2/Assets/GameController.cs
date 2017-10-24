@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour {
 		Sawnpoint1.SpawnTank (2, npctanks);
 		Sawnpoint2.SpawnTank (10, npctanks);
 	}
+	public void tankDestroy(TankNavS tank){
+		npctanks.Remove (tank);
+	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
 		if (randTimer <= 0) {

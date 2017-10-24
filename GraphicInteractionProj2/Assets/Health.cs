@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 	public float StartingHealth = 50f;          
-
+	[Tooltip ("TankControl")] public TankControl tankControl;
+	[Tooltip ("TankNavS")] public TankNavS tankNavS;
+	[Tooltip ("GameController")] public GameController gameController;
 	private float CurrentHealth;  
 	private bool Dead;            
 	public Slider Slider;                        
@@ -17,7 +19,7 @@ public class Health : MonoBehaviour
 	{
 	}
 	public float getArmor(){
-		return GetComponentInParent<TankControl> ().getArmor();
+		return tankControl.getArmor();
 	}
 
 	private void OnEnable()
@@ -47,7 +49,9 @@ public class Health : MonoBehaviour
 
 	private void OnDeath()
 	{
+		
 		Dead = true;
+		gameController.tankDestroy (tankNavS);
 		//ExplosionParticles.transform.position = transform.position;
 		//ExplosionParticles.gameObject.SetActive (true);
 		//ExplosionParticles.Play ();
