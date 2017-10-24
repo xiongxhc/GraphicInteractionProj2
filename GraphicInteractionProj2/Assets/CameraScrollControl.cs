@@ -10,6 +10,7 @@ public class CameraScrollControl : MonoBehaviour {
 	private float pivitAngle;
 	private float z_diff;
 	private Camera cam;
+	private Rigidbody rb;
 	// Use this for initialization
 	void Start () {
 		// calculate initial pivit angle
@@ -17,12 +18,15 @@ public class CameraScrollControl : MonoBehaviour {
 		pivitAngle = -Mathf.Atan (diffToCenter.y/diffToCenter.x)*Mathf.Rad2Deg;
 		z_diff = transform.localPosition.z;
 		cam = GetComponent<Camera> ();
+		rb = GetComponent<Rigidbody> ();
 	}
-	
+	void Fixedupdate(){
+	}
 	// Update is called once per frame
-	void Update () {
+	void OnTriggerEnter(Collision collisionInfo)
+	{
+
 	}
-		
 	public Vector3 getWorldLocation(){
 		return transform.position;
 	}
@@ -60,6 +64,5 @@ public class CameraScrollControl : MonoBehaviour {
 			// update camera locaiton
 			transform.position = Vector3.MoveTowards (transform.position, thirdPersonCam.getWorldPosition (), stepSize * Input.GetAxis ("Mouse ScrollWheel"));
 		}
-			
 	}
 }

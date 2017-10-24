@@ -23,11 +23,14 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		npctanks = new List<TankNavS>  ();
 //		Sawnpoint1.SpawnTank (10, npctanks);
-		//Sawnpoint2.SpawnTank (10, npctanks);
+//		Sawnpoint2.SpawnTank (10, npctanks);
 		spawnPoints.Add(Spawnpoint1);
 		spawnPoints.Add(Spawnpoint2);
 		spawnPoints.Add(Spawnpoint3);
 		spawnPoints.Add(Spawnpoint4);
+	}
+	void OnGUI() {
+		
 	}
 	private bool checkWaveComplete(){
 		foreach (SpawnpointScript s in spawnPoints) {
@@ -36,6 +39,7 @@ public class GameController : MonoBehaviour {
 		}
 		return npctanks.Count == 0 ? true : false;
 	}
+
 	public void tankDestroy(TankNavS tank){
 		npctanks.Remove (tank);
 	}
