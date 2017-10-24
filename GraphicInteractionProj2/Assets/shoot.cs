@@ -19,7 +19,10 @@ public class shoot : MonoBehaviour
 	public AudioSource ShootingAudio;  
 	public AudioClip FireClip; 
 	public AudioSource MovingAudio;  
-	public AudioClip MovingClip;  
+	public AudioClip MovingClip;
+	public Slider Slider;
+	public Color reloadColor = Color.red;
+	public Image FillImage;
 	[Tooltip ("TankNavS")] public TankNavS tank;
 	public float shootCooldown = 1.0f;
 	public void setShootSooldown(float cooldown){
@@ -38,6 +41,7 @@ public class shoot : MonoBehaviour
 	private void Update()
 	{
 		shootCooldownCounter -= Time.deltaTime;
+		updateRealoadBar ();
 		if (shootCooldownCounter <= 0.0f) {
 			shootCooldownCounter = 0;
 			//print ("Fire");
@@ -45,7 +49,10 @@ public class shoot : MonoBehaviour
 //			MovingAudio.Play ();
 		}
 	}
-
+	private void updateRealoadBar(){
+		Slider.value = 100 - (shootCooldownCounter / shootCooldown) * 100;
+		FillImage.color = reloadColor;
+	}
 
 	public void Fire()
 	{
@@ -56,6 +63,7 @@ public class shoot : MonoBehaviour
 		shellInstance.setDamage (tank.getTankControl().shellDamage);
 		CurrentLaunchForce = MinLaunchForce;
 		shootCooldownCounter = shootCooldown;
+		updateRealoadBar ();
 		GameObject particleObject = Instantiate (gunFireParticle, shootingPointController.getTransform ().position, Quaternion.identity).gameObject;
 		Destroy (particleObject, 1f);
 		particleObject.GetComponent<Rigidbody>().velocity = GetComponentInParent<Rigidbody>().velocity;

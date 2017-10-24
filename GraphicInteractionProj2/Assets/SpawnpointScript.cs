@@ -27,7 +27,7 @@ public class SpawnpointScript : MonoBehaviour {
 	void OnTriggerExit(Collider other){
 		colliderRecord.Remove (other);
 	}
-	public int getRestSpawnNum(){
+	public int getRemainingSpawnNum(){
 		return spawnNum;
 	}
 	// Update is called once per frame

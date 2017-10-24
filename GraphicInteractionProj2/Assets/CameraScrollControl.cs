@@ -8,7 +8,6 @@ public class CameraScrollControl : MonoBehaviour {
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
 	[Tooltip ("GunCamera")] public GunCamera gunCamera;
 	private float pivitAngle;
-	private float z_diff;
 	private Camera cam;
 	private Rigidbody rb;
 	// Use this for initialization
@@ -16,17 +15,13 @@ public class CameraScrollControl : MonoBehaviour {
 		// calculate initial pivit angle
 		var diffToCenter = transform.position - thirdPersonCam.getTransform().position;
 		pivitAngle = -Mathf.Atan (diffToCenter.y/diffToCenter.x)*Mathf.Rad2Deg;
-		z_diff = transform.localPosition.z;
 		cam = GetComponent<Camera> ();
 		rb = GetComponent<Rigidbody> ();
 	}
 	void Fixedupdate(){
+	
 	}
-	// Update is called once per frame
-	void OnTriggerEnter(Collision collisionInfo)
-	{
 
-	}
 	public Vector3 getWorldLocation(){
 		return transform.position;
 	}

@@ -8,9 +8,10 @@ public class ThirdPersonCam : MonoBehaviour {
 	public float mouseSensetivity = 5f;
 	public Texture2D crosshairOuter;
 	public Texture2D crosshairInner;
+	public bool showCrosshair = false;
+	public bool cameraMove = true;
 	[Tooltip ("GunCamera")] public GunCamera guncamerascript;
 	[Tooltip ("TankControl")] public TankControl tankControl;
-
 	[Tooltip ("CameraScrollControl")] public CameraScrollControl cameraScrollControl;
 	[Tooltip ("AimCube")] public AimCube aimCube;
 	// Use this for initialization
@@ -18,6 +19,7 @@ public class ThirdPersonCam : MonoBehaviour {
 
 	}
 	void OnGUI() {
+		if(!showCrosshair) return;
 		if (cameraScrollControl.GetComponent<Camera>().enabled) {
 			float x = (Screen.width / 2) - (crosshairOuter.width / 2);
 			float y = (Screen.height / 2) - (crosshairOuter.height / 2);
@@ -48,6 +50,8 @@ public class ThirdPersonCam : MonoBehaviour {
 		return transform;
 	}
 	void View_update(){
+		if (!cameraMove)
+			return;
 		//transform.localEulerAngles = new Vector3 (transform.localEulerAngles.x, transform.localEulerAngles.y,transform.localEulerAngles.z + Input.GetAxis ("Mouse X") * mouseSensetivity);
 		//
 		transform.Rotate(Vector3.up * Input.GetAxis ("Mouse X") * mouseSensetivity, Space.World);

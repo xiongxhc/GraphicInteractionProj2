@@ -24,7 +24,6 @@ public class TankNavS : MonoBehaviour {
 	public float engineMinPitch = 0.4f;
 	public float enginePitchRandRange = 0.3f;
 	public float maxVelocity = 40f;
-
 	private float soundOffset;
 //	private Quaternion spawnQuaternion = Quaternion.Euler(-90,0,0);
 	// Use this for initialization

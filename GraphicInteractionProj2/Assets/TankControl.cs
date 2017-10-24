@@ -22,10 +22,12 @@ public class TankControl : MonoBehaviour {
 		//transform.rotation = transform.rotation *= Quaternion.Euler (0, -90, 0);
 		//transform.Rotate (-90, 0, 0);
 		inclineOffset = transform.localRotation.eulerAngles.x;
-
 	}
 	public void setCooldown(float c){
 		shootScript.shootCooldown = c; 
+	}
+	public float getCooldown(){
+		return shootScript.shootCooldown; 
 	}
 	public Health getHealthScript(){
 		return health;

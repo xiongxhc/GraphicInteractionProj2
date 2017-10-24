@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 867
-  m_MinSize: {x: 581, y: 450}
-  m_MaxSize: {x: 14002, y: 14021}
+  m_MinSize: {x: 579, y: 300}
+  m_MaxSize: {x: 12004, y: 8021}
   vertical: 0
-  controlID: 19512
+  controlID: 36677
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,10 +120,10 @@ MonoBehaviour:
     y: 0
     width: 1531
     height: 867
-  m_MinSize: {x: 304, y: 450}
-  m_MaxSize: {x: 10000, y: 14021}
+  m_MinSize: {x: 304, y: 300}
+  m_MaxSize: {x: 8004, y: 8021}
   vertical: 1
-  controlID: 19513
+  controlID: 36678
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 304, y: 200}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 19514
+  controlID: 36679
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,24 +200,24 @@ MonoBehaviour:
     width: 377
     height: 520
   m_TreeViewState:
-    scrollPos: {x: 0, y: 1056}
-    m_SelectedIDs: 961bf1ff
-    m_LastClickedID: -975978
-    m_ExpandedIDs: 6c4df1ff5e4ef1ff3e54f1ffcc54f1ff8c58f1ff70d0f7ff42d6f7ff54d7f7ff462dfdffa02ffdffd4fbffff00000000742f0000e62f00003231000082340000a0c20d0046c30d00bac30d0002c40d00b8c50d0094c60d00f0c60d0004c70d00b0c80d00
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 5e4ef1ff
+    m_LastClickedID: -962978
+    m_ExpandedIDs: bc81efffca81efffd481efff6c4df1ff5e4ef1ff3e54f1ffcc54f1ff8c58f1ff70d0f7ff42d6f7ff54d7f7ff462dfdffa02ffdffd4fbffff00000000742f0000e62f00003231000082340000a0c20d0002c40d008ec40d004ac50d00f0c60d00
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: EnermyFCTxt
-      m_OriginalName: EnermyFCTxt
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -1052070
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -306,14 +306,14 @@ MonoBehaviour:
     width: 1148
     height: 520
   m_SceneLighting: 0
-  lastFramingTime: 23527.138684988022
+  lastFramingTime: 27083.87136912346
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 567.13324, y: 380.9684, z: -527.99854}
+    m_Target: {x: 691.77924, y: 248.76756, z: -143.32314}
     speed: 2
-    m_Value: {x: 567.13324, y: 380.9684, z: -527.99854}
+    m_Value: {x: 691.77924, y: 248.76756, z: -143.32314}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -336,13 +336,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.076721504, y: 0.018301887, z: -0.0014076763, w: -0.9968836}
+    m_Target: {x: 0.15334684, y: 0.14651325, z: 0.022997554, w: -0.9769799}
     speed: 2
-    m_Value: {x: -0.076721504, y: 0.018301887, z: -0.0014076763, w: -0.9968836}
+    m_Value: {x: 0.15334684, y: 0.14651325, z: 0.022997554, w: -0.9769799}
   m_Size:
-    m_Target: 96.21071
+    m_Target: 268.60056
     speed: 2
-    m_Value: 96.21071
+    m_Value: 268.60056
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -371,14 +371,14 @@ MonoBehaviour:
     y: 541
     width: 1531
     height: 326
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,19 +416,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/AssetStoreFreeModel/TornadoBanditsStudio/Low Poly Free Pack/Water
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/AssetStoreFreeModel/TornadoBanditsStudio/Low Poly Free Pack/Water
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /home/icefir/programs/GraphicInteractin/GraphicInteractionProj2/GraphicInteractionProj2
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a8250000
-    m_LastClickedID: 9640
-    m_ExpandedIDs: 00000000a8250000762800002c2a0000f02a00007e2b0000e82c000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 128}
+    m_SelectedIDs: 5a2c0000
+    m_LastClickedID: 11354
+    m_ExpandedIDs: 00000000a8250000762800002a2a00002c2a0000f02a00003a2b00007e2b0000e82c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -456,7 +456,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a8250000762800002c2a0000f02a00007e2b0000e82c000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000a8250000762800002a2a00002c2a0000f02a00003a2b00007e2b0000e82c000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -481,9 +481,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 961bf1ff
-    m_LastClickedInstanceID: -975978
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 5e4ef1ff
+    m_LastClickedInstanceID: -962978
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300003431000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -508,7 +508,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 16}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 356
 --- !u!114 &12
@@ -555,8 +555,8 @@ MonoBehaviour:
     y: 0
     width: 389
     height: 867
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -589,7 +589,7 @@ MonoBehaviour:
     y: 212
     width: 387
     height: 846
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 72.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 160
