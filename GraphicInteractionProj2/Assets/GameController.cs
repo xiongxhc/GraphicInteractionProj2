@@ -191,7 +191,7 @@ public class GameController : MonoBehaviour {
 		playerTank.turn (torqueDirection, forceDirection);
 		foreach(TankNavS npctank in npctanks){
 			npctank.getTankControl().AimTarget (playerTank.getTankControl().getWorldPosition() + randVector);
-			npctank.getNav().SetDestination(playerTank.getTankControl().getWorldPosition());
+			if(npctank.getNav().enabled)npctank.getNav().SetDestination(playerTank.getTankControl().getWorldPosition());
 			npctank.getTankControl().Fire ();
 		}
 	}

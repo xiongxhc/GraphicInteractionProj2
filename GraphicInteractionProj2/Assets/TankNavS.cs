@@ -24,6 +24,7 @@ public class TankNavS : MonoBehaviour {
 	public float engineMinPitch = 0.4f;
 	public float enginePitchRandRange = 0.3f;
 	public float maxVelocity = 40f;
+	public float NavStartDelay = 0.5f; // depaly navgation active by 0.5 seconds.
 	private float soundOffset;
 //	private Quaternion spawnQuaternion = Quaternion.Euler(-90,0,0);
 	// Use this for initialization
@@ -105,7 +106,11 @@ public class TankNavS : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		NavStartDelay -= Time.deltaTime;
+		NavStartDelay = NavStartDelay <= 0 ? 0 : NavStartDelay;
+		if (AIControl && NavStartDelay <= 0 && !getNav().enabled) {
+			getNav ().enabled = true;
+		}
 	}
 	public void accelerate(int forceDirection){
 		if(forceDirection!=0)

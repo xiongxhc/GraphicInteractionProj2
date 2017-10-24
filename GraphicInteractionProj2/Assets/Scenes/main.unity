@@ -96,15 +96,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 36.8
-    agentClimb: 0.4
+    agentRadius: 10
+    agentHeight: 10
+    agentSlope: 35.7
+    agentClimb: 5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 3.3333333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -5644,7 +5644,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 179efd2f17abe4f0988ebb21238a9e7c, type: 2}
     - target: {fileID: 100000, guid: e1b5b8672dff41246bc7c1dd08ff49ae, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: e1b5b8672dff41246bc7c1dd08ff49ae, type: 3}
       propertyPath: m_NavMeshLayer
@@ -5675,21 +5675,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: e1b5b8672dff41246bc7c1dd08ff49ae, type: 3}
---- !u!208 &662375305
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 662375303}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 67.144005, y: 43.144, z: 67.773}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 43.122, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &665978332 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 107218, guid: d6ef9e6786902824d9015c4b743a3ae6, type: 2}
@@ -9768,7 +9753,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 314f222691d9fcb47a6efce57ba99b5a, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 314f222691d9fcb47a6efce57ba99b5a, type: 3}
       propertyPath: m_NavMeshLayer
@@ -11519,7 +11504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1406372097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18483,8 +18468,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 7
-  m_BaseOffset: 5
+  m_Height: 4
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2119076242
@@ -18513,6 +18498,7 @@ MonoBehaviour:
   engineMinPitch: 0.4
   enginePitchRandRange: 0.3
   maxVelocity: 40
+  NavStartDelay: 0.5
 --- !u!54 &2119076243
 Rigidbody:
   m_ObjectHideFlags: 0

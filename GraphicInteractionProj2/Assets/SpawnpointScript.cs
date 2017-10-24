@@ -36,7 +36,6 @@ public class SpawnpointScript : MonoBehaviour {
 		if (startSpawn && timeTracker <= 0  && spawnNum > 0 && mainTrackList.Count < maxSpawnInstance && colliderRecord.Count == 0) {
 			spawnNum -= 1;
 			TankNavS newTank = Instantiate (tank, transform.position, Quaternion.identity);
-			newTank.getNav ().enabled = true;
 			newTank.getTankControl ().setArmor (spawnArmor);
 			newTank.getTankControl ().setDamage (spawnFirepower);
 			newTank.getTankControl ().getHealthScript().setMaxHealth (spawnHealth);
