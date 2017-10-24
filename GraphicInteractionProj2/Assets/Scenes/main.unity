@@ -3946,7 +3946,7 @@ MonoBehaviour:
   randRefreshTimerSeconds: 1
   randRange: 5
   fireButton: Fire
-  MoneyMultiplier: 20
+  MoneyMultiplier: 10
   Money: 0
   waveCanvasControl: {fileID: 1406372101}
   Spawnpoint1: {fileID: 1741277554}
@@ -8054,7 +8054,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 915446032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 280, y: 6.4, z: -150}
+  m_LocalPosition: {x: 280, y: 1.37, z: -141.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8070,7 +8070,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 20, z: 40}
+  m_Size: {x: 32, y: 15, z: 32}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &921927479
 GameObject:
@@ -10834,7 +10834,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1264341438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150, y: 6.79, z: 280}
+  m_LocalPosition: {x: 158.03, y: 1.76, z: 280}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10850,7 +10850,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 20, z: 40}
+  m_Size: {x: 32, y: 15, z: 32}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1269810297 stripped
 GameObject:
@@ -13385,7 +13385,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1508595326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -150, y: 9.39, z: 280}
+  m_LocalPosition: {x: -150, y: 4.36, z: 280}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13401,7 +13401,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 20, z: 40}
+  m_Size: {x: 32, y: 15, z: 32}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1521737174 stripped
 GameObject:
@@ -15150,7 +15150,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 20, z: 40}
+  m_Size: {x: 32, y: 15, z: 32}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1741277553
 Transform:
@@ -15159,7 +15159,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1741277549}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -156.21, y: 5.79, z: -200.05}
+  m_LocalPosition: {x: -156.21, y: 0.76, z: -200.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

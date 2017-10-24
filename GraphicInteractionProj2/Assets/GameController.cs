@@ -177,6 +177,8 @@ public class GameController : MonoBehaviour {
 			Cursor.lockState = CursorLockMode.None;
 		else
 			Cursor.lockState = CursorLockMode.Locked;
+		if (!playerTank)
+			return;
 		int torqueDirection = 0;
 		int forceDirection = 0;
 		if (Input.GetKey (KeyCode.A)) 
