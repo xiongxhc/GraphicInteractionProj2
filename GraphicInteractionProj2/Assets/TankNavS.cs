@@ -76,17 +76,23 @@ public class TankNavS : MonoBehaviour {
 			var localVel = transform.InverseTransformDirection(rb.velocity);
 			var forwordSpeed = localVel.x;
 			var rotateSpeed = rb.angularVelocity.y;
-			if(child.name.Contains("Wheel")){
-				// get diameter
-				var length = child.GetComponent<MeshRenderer> ().bounds.extents.x;
-				var c = 2 * Mathf.PI * length;
-				var rotationDirection = child.name.Contains ("Left") ? 1 : -1;
-				// calculate Rotation per second
-				var wheelSpeed = forwordSpeed + -rotateSpeed * rotationDirection * 10;
-				var rps = wheelSpeed / c;
-				// apply rotation
-				child.Rotate (Vector3.forward,rps * Time.deltaTime*10);
+			if(child.name.Equals("PlayerTank")){
+
+				foreach (Transform childinchild in child) {
+					if(childinchild.name.Contains("Wheel")){
+						// get diameter
+						var length = childinchild.GetComponent<MeshRenderer> ().bounds.extents.x;
+						var c = 2 * Mathf.PI * length;
+						var rotationDirection = childinchild.name.Contains ("Left") ? 1 : -1;
+						// calculate Rotation per second
+						var wheelSpeed = forwordSpeed + -rotateSpeed * rotationDirection * 10;
+						//var rps = wheelSpeed / c;
+						// apply rotation
+						childinchild.Rotate (Vector3.forward,wheelSpeed * Time.deltaTime*10);
+					}
+				}
 			}
+
 		}
 		rb.maxAngularVelocity = maxRotateSpeed;
 

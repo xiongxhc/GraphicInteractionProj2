@@ -12,7 +12,7 @@ public class shoot : MonoBehaviour
 	public Transform FireTransform;    
 	[Tooltip ("TurretControl")] public TurretControl turretControl;
 	[Tooltip ("ShootingPointController")] public ShootingPointController shootingPointController;
-	private ParticleSystem gunFireParticle;
+	public ParticleSystem gunFireParticle;
 	private float CurrentLaunchForce;  
 	private float ChargeSpeed;         
 	private float shootCooldownCounter = 0f;
@@ -22,9 +22,6 @@ public class shoot : MonoBehaviour
 	public AudioClip MovingClip;  
 	[Tooltip ("TankNavS")] public TankNavS tank;
 	public float shootCooldown = 1.0f;
-	public void setParticle(ParticleSystem p){
-		gunFireParticle = p;
-	}
 	public void setShootSooldown(float cooldown){
 		shootCooldown = cooldown;
 	}

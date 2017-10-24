@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SawnpointScript : MonoBehaviour {
-	private int maxSpawnInstance = 7;
+	private int maxSpawnInstance = 20;
 	public float minSpawnCoolDown = 1; // spawn a tank every 5 seconds if possible
 	private float timeTracker = 0;
 	private int spawnNum = 0;
@@ -11,6 +11,10 @@ public class SawnpointScript : MonoBehaviour {
 	private List<Collider> colliderRecord;
 	private List<TankNavS> mainTrackList;
 	public TankNavS tank ;
+	public float spawnFirepower = 20f;
+	public float spawnArmor = 5f;
+	public float spawnHealth = 10f;
+	public float spawnFireCooldown = 5f;
 	// Use this for initialization
 	void Start () {
 		colliderRecord = new List<Collider> ();
@@ -29,6 +33,10 @@ public class SawnpointScript : MonoBehaviour {
 			spawnNum -= 1;
 			TankNavS newTank = Instantiate (tank, transform.position, Quaternion.identity);
 			newTank.getNav ().enabled = true;
+			newTank.getTankControl ().setArmor (spawnArmor);
+			newTank.getTankControl ().setDamage (spawnFirepower);
+			newTank.getTankControl ().getHealthScript().setMaxHealth (spawnHealth);
+			newTank.getTankControl ().setCooldown (spawnFireCooldown);
 			newTank.getTankControl ().transform.localRotation = spawnQuaternion;
 			newTank.setAIControl ();
 			mainTrackList.Add(newTank);

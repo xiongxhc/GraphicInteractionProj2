@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-	public float StartingHealth = 50f;          
+	public float MaxHealth = 100f;          
 	[Tooltip ("TankControl")] public TankControl tankControl;
 	[Tooltip ("TankNavS")] public TankNavS tankNavS;
 	[Tooltip ("GameController")] public GameController gameController;
@@ -24,16 +24,33 @@ public class Health : MonoBehaviour
 
 	private void OnEnable()
 	{
-		CurrentHealth = StartingHealth;
+		CurrentHealth = MaxHealth;
 		Dead = false;
 		SetHealthUI();
-
-
+	}
+	public void setMaxHealth(float h){
+		MaxHealth = h;
+		CurrentHealth = MaxHealth;
+		SetHealthUI ();
+	}
+	public void setCurrentHealth(float h){
+		CurrentHealth = h > MaxHealth ? MaxHealth : h;
+		SetHealthUI ();
+	}
+	public void restoreHeath(float h){
+		CurrentHealth += h;
+		CurrentHealth = CurrentHealth > MaxHealth ? MaxHealth : CurrentHealth;
+		SetHealthUI ();
+	}
+	public void restoreHeathToMax(){
+		CurrentHealth = MaxHealth;
+		SetHealthUI ();
 	}
 
 	private void SetHealthUI()
 	{
 		// Adjust the value and colour of the slider.
+		Slider.maxValue = MaxHealth;
 		Slider.value = CurrentHealth;
 		FillImage.color = FullHealthColor;
 	}
@@ -55,6 +72,6 @@ public class Health : MonoBehaviour
 		//ExplosionParticles.transform.position = transform.position;
 		//ExplosionParticles.gameObject.SetActive (true);
 		//ExplosionParticles.Play ();
-		gameObject.SetActive (false);
+		Destroy(gameObject);
 	}
 }

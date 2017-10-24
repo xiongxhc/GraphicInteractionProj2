@@ -6,14 +6,8 @@ public class TankControl : MonoBehaviour {
 
 
 	public float shellDamage = 20;
-
-
-
 	public float tankArmor = 20; // tank armor. Will negate damage. if tank armor is greater then shell damage, shell will bounce.
-
 	public ParticleSystem gunFireParticle;
-
-
 	private float inclineOffset;
 	[Tooltip ("GunAiming")] public GunAiming gunAiming;
 	[Tooltip ("TankTrack")] public TankTrack leftTrack;
@@ -21,14 +15,20 @@ public class TankControl : MonoBehaviour {
 	[Tooltip ("TankBody")] public TankBody tankBody;
 	[Tooltip ("TurretControl")] public TurretControl turretControl;
 	[Tooltip ("shoot")] public shoot shootScript;
+	[Tooltip ("Health")] public Health health;
 	[Tooltip ("ShootingPointController")] public ShootingPointController shootingPointController;
 
 	void Start () {
 		//transform.rotation = transform.rotation *= Quaternion.Euler (0, -90, 0);
 		//transform.Rotate (-90, 0, 0);
 		inclineOffset = transform.localRotation.eulerAngles.x;
-		shootScript.setParticle (gunFireParticle);
 
+	}
+	public void setCooldown(float c){
+		shootScript.shootCooldown = c; 
+	}
+	public Health getHealthScript(){
+		return health;
 	}
 	public void setDamage(float Damage){
 		shellDamage = Damage;

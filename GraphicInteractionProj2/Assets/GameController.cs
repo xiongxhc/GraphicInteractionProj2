@@ -18,8 +18,8 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		npctanks = new List<TankNavS>  ();
-		Sawnpoint1.SpawnTank (2, npctanks);
-		Sawnpoint2.SpawnTank (10, npctanks);
+		//Sawnpoint1.SpawnTank (10, npctanks);
+		//Sawnpoint2.SpawnTank (10, npctanks);
 	}
 	public void tankDestroy(TankNavS tank){
 		npctanks.Remove (tank);
@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour {
 		foreach(TankNavS npctank in npctanks){
 			npctank.getTankControl().AimTarget (playerTank.getTankControl().getWorldPosition() + randVector);
 			npctank.getNav().SetDestination(playerTank.getTankControl().getWorldPosition());
-			//npctank.Fire ();
+			npctank.getTankControl().Fire ();
 		}
 	}
 
