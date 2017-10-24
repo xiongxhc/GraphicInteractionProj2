@@ -29,11 +29,17 @@ public class WaveCanvasControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!gameObject.activeSelf)
+			return;
+		MoneyText.text = gameController.Money.ToString();
+		PlayerFirepowerText.text = playerTankNavS.getTankControl ().shellDamage.ToString();
+		PlayerArmorText.text = playerTankNavS.getTankControl ().tankArmor.ToString();
+		PlayerHealthText.text = playerTankNavS.getTankControl ().getHealthScript().MaxHealth.ToString();
+		PlayerFireCooldownText.text = playerTankNavS.getTankControl ().getCooldown().ToString();
 	}
 
 	public void NextWaveEvent(){
-		
+		gameController.startWave ();
 	}
 	public void BuyFirepower(){
 	}
