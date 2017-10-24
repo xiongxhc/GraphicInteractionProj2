@@ -57,7 +57,7 @@ public class Health : MonoBehaviour
 
 	public void TakeDamage(float amount)
 	{
-		CurrentHealth -= amount;
+		CurrentHealth -= amount - tankControl.getArmor() * 0.5f;
 		SetHealthUI();
 		if (CurrentHealth <= 0f && !Dead) {
 			OnDeath ();

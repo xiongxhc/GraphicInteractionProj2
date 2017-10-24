@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	public float randRefreshTimerSeconds = 1;
 	public float randRange = 5;
 	public string fireButton = "Fire";
-	public int MoneyMultiplier = 10;
+	public int MoneyMultiplier = 20;
 	private float randTimer = 0;
 	private int waveCount = 0;
 	private Vector3 randVector = new Vector3(0,0,0);
@@ -63,12 +63,13 @@ public class GameController : MonoBehaviour {
 			return;
 		}
 		npctanks.Remove (tank);
-		Money += waveCount * MoneyMultiplier;
+		Money += MoneyMultiplier;
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
+		var randrange = randRange / waveCount;
 		if (randTimer <= 0) {
-			randVector = new Vector3 (Random.Range (-randRange, randRange), Random.Range (-randRange, randRange), Random.Range (-randRange, randRange));
+			randVector = new Vector3 (Random.Range (-randrange, randrange), Random.Range (-randrange, randrange), Random.Range (-randrange, randrange));
 			randTimer = randRefreshTimerSeconds;
 		}
 	}
