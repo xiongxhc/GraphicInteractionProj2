@@ -84,14 +84,17 @@ public class GameController : MonoBehaviour {
 		waveCanvasControl.EnermyFirepowerText.text = Spawnpoint1.spawnFirepower.ToString();
 		waveCanvasControl.EnermyHealthText.text = Spawnpoint1.spawnHealth.ToString();
 		waveCanvasControl.WaveText.text = waveCount.ToString ();
-		waveCanvasControl.EnermyNumText.text = countSpawn ().ToString();
+		waveCanvasControl.EnermyNumText.text = countRemainingSpawn ().ToString();
 	}
-	public int countSpawn(){
+	public int countRemainingSpawn(){
 		int counter = 0;
 		foreach(SpawnpointScript s in spawnPoints){
 			counter += s.getRemainingSpawnNum ();
 		}
 		return counter;
+	}
+	public int countRemainingEnermy(){
+		return countRemainingSpawn() + npctanks.Count;
 	}
 
 	private void waveSpawn(){

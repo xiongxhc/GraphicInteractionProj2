@@ -21,7 +21,9 @@ public class Health : MonoBehaviour
 	public float getArmor(){
 		return tankControl.getArmor();
 	}
-
+	public float getCurrentHealth(){
+		return CurrentHealth;
+	}
 	private void OnEnable()
 	{
 		CurrentHealth = MaxHealth;

@@ -36,7 +36,9 @@ public class shoot : MonoBehaviour
 	private void Start()
 	{
 	}
-
+	public float getshootCooldownCounter(){
+		return shootCooldownCounter;
+	}
 
 	private void Update()
 	{
