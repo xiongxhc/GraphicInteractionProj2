@@ -14,12 +14,12 @@ public class GameController : MonoBehaviour {
 	private List<TankNavS> npctanks;
 	[Tooltip ("SawnpointScript")] public SawnpointScript Sawnpoint1;
 	[Tooltip ("SawnpointScript")] public SawnpointScript Sawnpoint2;
-	[Tooltip ("TankControl")] public TankControl playerTankControl;
+	[Tooltip ("TankNavS")] public TankNavS playerTank;
 	// Use this for initialization
 	void Start () {
 		npctanks = new List<TankNavS>  ();
-		Sawnpoint1.SpawnTank (1, npctanks);
-		Sawnpoint2.SpawnTank (1, npctanks);
+		Sawnpoint1.SpawnTank (2, npctanks);
+		Sawnpoint2.SpawnTank (10, npctanks);
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
@@ -48,14 +48,14 @@ public class GameController : MonoBehaviour {
 			forceDirection = -1;
 
 		if (Input.GetButtonDown (fireButton)) {
-			playerTankControl.Fire ();
+			playerTank.getTankControl().Fire ();
 		}
-		playerTankControl.accelerate (forceDirection);
-		playerTankControl.turn (torqueDirection, forceDirection);
+		playerTank.accelerate (forceDirection);
+		playerTank.turn (torqueDirection, forceDirection);
 
 		foreach(TankNavS npctank in npctanks){
-			npctank.getTankControl().AimTarget (playerTankControl.getWorldPosition() + randVector);
-			npctank.getNav().SetDestination(playerTankControl.getWorldPosition());
+			npctank.getTankControl().AimTarget (playerTank.getTankControl().getWorldPosition() + randVector);
+			npctank.getNav().SetDestination(playerTank.getTankControl().getWorldPosition());
 			//npctank.Fire ();
 		}
 	}

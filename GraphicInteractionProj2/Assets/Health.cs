@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 	public float StartingHealth = 50f;          
-	//private ParticleSystem ExplosionParticles;   
+
 	private float CurrentHealth;  
 	private bool Dead;            
 	public Slider Slider;                        
@@ -15,11 +15,10 @@ public class Health : MonoBehaviour
 
 	private void Awake()
 	{
-		//ExplosionParticles = Instantiate(ExplosionPrefab).GetComponent<ParticleSystem>();
-
-		//ExplosionParticles.gameObject.SetActive(false);
 	}
-
+	public float getArmor(){
+		return GetComponentInParent<TankControl> ().getArmor();
+	}
 
 	private void OnEnable()
 	{
@@ -41,8 +40,6 @@ public class Health : MonoBehaviour
 	{
 		CurrentHealth -= amount;
 		SetHealthUI();
-//		print ("Take damage: ");
-//		print (CurrentHealth);
 		if (CurrentHealth <= 0f && !Dead) {
 			OnDeath ();
 		}

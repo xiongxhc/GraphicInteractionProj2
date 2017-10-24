@@ -16,8 +16,6 @@ public class GunAiming : MonoBehaviour {
 	[Tooltip ("CameraScrollControl")] public CameraScrollControl cameraScrollControl;
 	[Tooltip ("TurretControl")] public TurretControl turretControl;
 	[Tooltip ("ThirdPersonCam")] public ThirdPersonCam thirdPersonCam;
-
-
 	[Tooltip ("TankControl")] public TankControl tankControl;
 	[Tooltip ("TurretColliderControl")] public TurretColliderControl turretColliderControl;
 
@@ -25,13 +23,6 @@ public class GunAiming : MonoBehaviour {
 		gunRotYOffset = transform.localRotation.eulerAngles.y;
 	}
 	void OnGUI(){
-//		//var turret_euler_diff = turretControl.getTransform ().eulerAngles - turret_euler_offset;
-//		GUI.Label (new Rect (10, 40, 1000, 200), "Turret euler: " + turretControl.getTransform().localEulerAngles);
-//		var cam_euler_diff = cameraScrollControl.getTransform ().eulerAngles - camera_scroll_euler_offset;
-//		//GUI.Label (new Rect (10, 80, 1000, 200), "Current Camera Local Euler:" + cam_euler_diff);
-
-		GUI.Label (new Rect (10, 40, 1000, 200), turretControl.getTransform ().localRotation.eulerAngles.ToString());
-
 	}
 	void LateUpdate () {
 		//turretControl.getTransform ().Rotate (Vector3.forward * turrentRotationSpeed);
@@ -62,7 +53,7 @@ public class GunAiming : MonoBehaviour {
 		transform.localRotation = Quaternion.Euler (0,Mathf.Clamp(transform.localRotation.eulerAngles.y,gunRotYOffset-gunElevation,gunRotYOffset-gunDepression),0);
 		//transform.localRotation = Quaternion.Euler (0,transform.localRotation.eulerAngles.y,0);
 		transform.localRotation = Quaternion.RotateTowards (gun_priv_rot,transform.localRotation,gunElevSpeed);
-		turretColliderControl.getTransform ().localRotation = turretControl.getTransform ().localRotation;
+		turretColliderControl.getTransform ().localRotation = Quaternion.Euler(0,turretControl.getTransform ().localRotation.eulerAngles.z,0);
 	}
 
 	// Update is called once per frame

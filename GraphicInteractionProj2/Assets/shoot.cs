@@ -15,34 +15,34 @@ public class shoot : MonoBehaviour
 	private ParticleSystem gunFireParticle;
 	private float CurrentLaunchForce;  
 	private float ChargeSpeed;         
-
+	private float shootCooldownCounter = 0f;
 	public AudioSource ShootingAudio;  
 	public AudioClip FireClip; 
 	public AudioSource MovingAudio;  
 	public AudioClip MovingClip;  
-	[Tooltip ("TankControl")] public TankControl tank;
-	public float ShootingTimePeriod = 1.0f;
+	[Tooltip ("TankNavS")] public TankNavS tank;
+	public float shootCooldown = 1.0f;
 	public void setParticle(ParticleSystem p){
 		gunFireParticle = p;
 	}
-
+	public void setShootSooldown(float cooldown){
+		shootCooldown = cooldown;
+	}
 	private void OnEnable()
 	{
 		CurrentLaunchForce = MinLaunchForce;
 	}
 
-
 	private void Start()
 	{
-		ShootingTimePeriod = 0;
 	}
 
 
 	private void Update()
 	{
-		ShootingTimePeriod -= Time.deltaTime;
-		if (ShootingTimePeriod <= 0.0f) {
-			ShootingTimePeriod = 0;
+		shootCooldownCounter -= Time.deltaTime;
+		if (shootCooldownCounter <= 0.0f) {
+			shootCooldownCounter = 0;
 			//print ("Fire");
 //			MovingAudio.clip = MovingClip;
 //			MovingAudio.Play ();
@@ -52,13 +52,13 @@ public class shoot : MonoBehaviour
 
 	public void Fire()
 	{
-		if (ShootingTimePeriod > 0)
+		if (shootCooldownCounter > 0)
 			return;
 		Bullet shellInstance = Instantiate (Shell, FireTransform.position, FireTransform.rotation);
 		shellInstance.setVelocity(CurrentLaunchForce * FireTransform.forward + tank.GetComponent<Rigidbody>().velocity);
-		shellInstance.setDamage (tank.shellDamage);
+		shellInstance.setDamage (tank.getTankControl().shellDamage);
 		CurrentLaunchForce = MinLaunchForce;
-		ShootingTimePeriod = 1.0f;
+		shootCooldownCounter = shootCooldown;
 		GameObject particleObject = Instantiate (gunFireParticle, shootingPointController.getTransform ().position, Quaternion.identity).gameObject;
 		Destroy (particleObject, 1f);
 		particleObject.GetComponent<Rigidbody>().velocity = GetComponentInParent<Rigidbody>().velocity;

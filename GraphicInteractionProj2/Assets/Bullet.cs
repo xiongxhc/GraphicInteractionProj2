@@ -25,12 +25,22 @@ public class Bullet : MonoBehaviour {
 	void OnCollisionEnter(Collision other)
 	{	
 		//Debug.Log ("Entering!");
-		GetComponent<AudioSource> ().Play ();
+
 		//Debug.Log (GetComponent<AudioSource> ().isPlaying);
 		Health targetHealth = other.gameObject.GetComponentInParent<Health>();
-		if(targetHealth)targetHealth.TakeDamage (MaxDamage);
-		Destroy(Instantiate (ExplosionParticles, transform.position, Quaternion.identity).gameObject,3f);
-		Destroy (gameObject);
+		if (targetHealth) {
+			if (targetHealth.getArmor () < MaxDamage) {
+				targetHealth.TakeDamage (MaxDamage);
+				GetComponent<AudioSource> ().Play ();
+				Destroy (Instantiate (ExplosionParticles, transform.position, Quaternion.identity).gameObject, 3f);
+				Destroy (gameObject);
+			}
+		} else {
+			GetComponent<AudioSource> ().Play ();
+			Destroy(Instantiate (ExplosionParticles, transform.position, Quaternion.identity).gameObject,3f);
+			Destroy (gameObject);
+		}
+
 
 	}
 		

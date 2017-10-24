@@ -26,7 +26,6 @@ public class ThirdPersonCam : MonoBehaviour {
 			Vector3 screenPos = cameraScrollControl.getAimTargetGUIFirstPerson();
 			float x = screenPos.x - (crosshairOuter.width / 2);
 			float y = Screen.height - screenPos.y - (crosshairOuter.height / 2);
-
 			GUI.DrawTexture (new Rect (x, y, crosshairOuter.width, crosshairOuter.height), crosshairOuter);
 		}
 //		GUI.Label (new Rect (10, 40, 1000, 200), "Local camera rotaion:" + transform.localEulerAngles);
