@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
 	public float randRefreshTimerSeconds = 1;
 	public float randRange = 5;
 	public string fireButton = "Fire";
+	public int MoneyMultiplier = 10;
 	private float randTimer = 0;
 	private int waveCount = 0;
 	private Vector3 randVector = new Vector3(0,0,0);
@@ -57,7 +58,12 @@ public class GameController : MonoBehaviour {
 		}
 	}
 	public void tankDestroy(TankNavS tank){
+		if (tank.name.Equals ("NavTank")) {
+			//gameover event
+			return;
+		}
 		npctanks.Remove (tank);
+		Money += waveCount * MoneyMultiplier;
 	}
 	private void refreshRand(){
 		randTimer -= Time.deltaTime;
@@ -95,7 +101,7 @@ public class GameController : MonoBehaviour {
 		switch (waveCount) {
 		case 1:
 			setSpawnStates (25, 20, 40, 5);
-			Spawnpoint1.SpawnTank (1, npctanks);
+			Spawnpoint2.SpawnTank (1, npctanks);
 			showWaveCanvas ();
 			break;
 		case 2:

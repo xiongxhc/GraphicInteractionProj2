@@ -42,12 +42,28 @@ public class WaveCanvasControl : MonoBehaviour {
 		gameController.startWave ();
 	}
 	public void BuyFirepower(){
+		if (gameController.Money >= int.Parse (PlayerFirepowerCostText.text)) {
+			gameController.Money -= int.Parse (PlayerFirepowerCostText.text);
+			playerTankNavS.getTankControl ().shellDamage += 10;
+		}
 	}
 	public void BuyHealth(){
+		if (gameController.Money >= int.Parse (PlayerHealthCostText.text)) {
+			gameController.Money -= int.Parse (PlayerHealthCostText.text);
+			playerTankNavS.getTankControl ().getHealthScript ().setMaxHealth (playerTankNavS.getTankControl ().getHealthScript().MaxHealth + 10);
+		}
 	}
 	public void BuyCooldown(){
+		if (gameController.Money >= int.Parse (PlayerFireCooldownCostText.text)) {
+			gameController.Money -= int.Parse (PlayerFireCooldownCostText.text);
+			playerTankNavS.getTankControl ().setCooldown (playerTankNavS.getTankControl ().getCooldown () * 0.9f);
+		}
 	}
 	public void BuyArmor(){
+		if (gameController.Money >= int.Parse (PlayerArmorCostText.text)) {
+			gameController.Money -= int.Parse (PlayerArmorCostText.text);
+			playerTankNavS.getTankControl ().tankArmor += 10;
+		}
 	}
 
 
