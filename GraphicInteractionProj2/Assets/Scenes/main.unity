@@ -5721,12 +5721,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcb068ef9fcf4689acb599c6fb2bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnCoolDown: 1
+  minSpawnCoolDown: 2
   tank: {fileID: 2119076242}
   spawnFirepower: 20
   spawnArmor: 5
   spawnHealth: 20
-  spawnFireCooldown: 0.5
+  spawnFireCooldown: 5
 --- !u!4 &915446034
 Transform:
   m_ObjectHideFlags: 0
@@ -7972,12 +7972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcb068ef9fcf4689acb599c6fb2bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnCoolDown: 1
+  minSpawnCoolDown: 2
   tank: {fileID: 2119076242}
   spawnFirepower: 20
   spawnArmor: 5
   spawnHealth: 20
-  spawnFireCooldown: 0.5
+  spawnFireCooldown: 5
 --- !u!4 &1264341440
 Transform:
   m_ObjectHideFlags: 0
@@ -9848,12 +9848,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcb068ef9fcf4689acb599c6fb2bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnCoolDown: 1
+  minSpawnCoolDown: 2
   tank: {fileID: 2119076242}
   spawnFirepower: 20
   spawnArmor: 5
   spawnHealth: 20
-  spawnFireCooldown: 0.5
+  spawnFireCooldown: 5
 --- !u!4 &1508595328
 Transform:
   m_ObjectHideFlags: 0
@@ -11224,12 +11224,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcb068ef9fcf4689acb599c6fb2bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnCoolDown: 1
+  minSpawnCoolDown: 2
   tank: {fileID: 2119076242}
   spawnFirepower: 20
   spawnArmor: 5
   spawnHealth: 20
-  spawnFireCooldown: 0.5
+  spawnFireCooldown: 5
 --- !u!1001 &1752844961
 Prefab:
   m_ObjectHideFlags: 0

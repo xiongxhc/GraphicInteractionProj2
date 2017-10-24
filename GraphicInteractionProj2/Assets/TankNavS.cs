@@ -24,6 +24,7 @@ public class TankNavS : MonoBehaviour {
 	public float engineMinPitch = 0.4f;
 	public float enginePitchRandRange = 0.3f;
 	public float maxVelocity = 40f;
+
 	private float soundOffset;
 //	private Quaternion spawnQuaternion = Quaternion.Euler(-90,0,0);
 	// Use this for initialization
@@ -77,7 +78,6 @@ public class TankNavS : MonoBehaviour {
 			var forwordSpeed = localVel.x;
 			var rotateSpeed = rb.angularVelocity.y;
 			if(child.name.Equals("PlayerTank")){
-
 				foreach (Transform childinchild in child) {
 					if(childinchild.name.Contains("Wheel")){
 						// get diameter
@@ -103,6 +103,7 @@ public class TankNavS : MonoBehaviour {
 		localVelocity.x = localVelocity.x > maxVelocity ? maxVelocity : localVelocity.x;
 		rb.velocity = transform.TransformDirection (localVelocity);
 	}
+
 	// Update is called once per frame
 	void Update () {
 
