@@ -4037,7 +4037,7 @@ MonoBehaviour:
   randRange: 5
   fireButton: Fire
   MoneyMultiplier: 10
-  Money: 0
+  Money: 20
   waveCanvasControl: {fileID: 1406372101}
   Spawnpoint1: {fileID: 1741277554}
   Spawnpoint2: {fileID: 915446033}
@@ -19653,17 +19653,17 @@ MonoBehaviour:
   massCenter: {fileID: 584396835}
   nav: {fileID: 2119076241}
   rb: {fileID: 0}
-  powerKN: 200
-  maxRotateSpeed: 1.5
-  torqueKN: 1500
+  powerKN: 220
+  maxRotateSpeed: 2
+  torqueKN: 1600
   airDrag: 0.2
   groundGrag: 0.05
   stationeryTorqueMutiplier: 10
-  powerDirectionMultipler: 0.8
+  powerDirectionMultipler: 0.95
   engineMaxPitch: 0.8
   engineMinPitch: 0.4
   enginePitchRandRange: 0.3
-  maxVelocity: 40
+  maxVelocity: 50
   NavStartDelay: 0.5
 --- !u!54 &2119076243
 Rigidbody:
