@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour {
 	public float randRange = 5;
 	public string fireButton = "Fire";
 	public int MoneyMultiplier = 20;
+	public Canvas pauseCanvas;
 	private float randTimer = 0;
 	private int waveCount = 0;
 	private Vector3 randVector = new Vector3(0,0,0);
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour {
 	private bool waitingCanvas = false;
 	public int Money = 0;
 	private List<TankNavS> npctanks;
+	private bool isPause;
 	[Tooltip ("WaveCanvasControl")] public WaveCanvasControl waveCanvasControl;
 	[Tooltip ("SpawnpointScript")] public SpawnpointScript Spawnpoint1;
 	[Tooltip ("SpawnpointScript")] public SpawnpointScript Spawnpoint2;
@@ -47,6 +49,24 @@ public class GameController : MonoBehaviour {
 	}
 	void OnGUI() {
 		
+	}
+	public void TogglePause(){
+		// do nothing if already waiting for canvas
+		if(waitingCanvas) return;
+		if (isPause) {
+			Time.timeScale = 1;
+			pauseCanvas.gameObject.SetActive (false);
+			Cursor.lockState = CursorLockMode.Locked;
+			thirdPersonCam.showCrosshair = true;
+			thirdPersonCam.cameraMove = true;
+		} else {
+			Time.timeScale = 0;
+			Cursor.lockState = CursorLockMode.None;
+			pauseCanvas.gameObject.SetActive (true);
+			thirdPersonCam.showCrosshair = false;
+			thirdPersonCam.cameraMove = false;
+		}
+		isPause = !isPause;
 	}
 	public int getWaveCount(){
 		return waveCount;
@@ -202,10 +222,8 @@ public class GameController : MonoBehaviour {
 		}
 		refreshRand ();
 		Physics.gravity = new Vector3(0, -gravity, 0);
-		if (Input.GetKey(KeyCode.Escape) || waitingCanvas)
-			Cursor.lockState = CursorLockMode.None;
-		else
-			Cursor.lockState = CursorLockMode.Locked;
+		if (Input.GetKeyUp (KeyCode.Escape))
+			TogglePause ();
 		if (!playerTank)
 			return;
 		int torqueDirection = 0;
