@@ -24,9 +24,21 @@ public class GameCanvasScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		EnermyRemainingText.text = gameController.countRemainingEnermy ().ToString();
-		HealthSlider.maxValue = tankControl.getHealthScript ().MaxHealth;
-		HealthSlider.value = tankControl.getHealthScript ().getCurrentHealth();
-		HealthText.text = tankControl.getHealthScript ().getCurrentHealth().ToString() + "/" + tankControl.getHealthScript ().MaxHealth.ToString();
-		ReloadSlider.value = 100 - (shootControl.getshootCooldownCounter() / shootControl.shootCooldown) * 100;
+		if(HealthSlider.enabled)HealthSlider.maxValue = tankControl.getHealthScript ().MaxHealth;
+		if(HealthSlider.enabled)HealthSlider.value = tankControl.getHealthScript ().getCurrentHealth();
+		if(HealthSlider.enabled)HealthText.text = tankControl.getHealthScript ().getCurrentHealth().ToString() + "/" + tankControl.getHealthScript ().MaxHealth.ToString();
+		if(ReloadSlider.enabled)ReloadSlider.value = 100 - (shootControl.getshootCooldownCounter() / shootControl.shootCooldown) * 100;
+	}
+	public void enableBars(){
+		HealthSlider.gameObject.SetActive(true);
+		ReloadSlider.gameObject.SetActive(true);
+	}
+	public void disableBars(){
+		HealthSlider.gameObject.SetActive(false);
+		ReloadSlider.gameObject.SetActive(false);
+	}
+	public void setBarEnable(bool state){
+		HealthSlider.gameObject.SetActive(state);
+		ReloadSlider.gameObject.SetActive(state);
 	}
 }

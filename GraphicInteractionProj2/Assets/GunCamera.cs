@@ -6,7 +6,7 @@ public class GunCamera : MonoBehaviour {
 
 	public Camera main_camera;
 	public Camera this_camera;
-
+	[Tooltip ("GameCanvasScript")] public GameCanvasScript gameCanvasScript;
 	// Use this for initialization
 	void Start () {
 		this_camera = GetComponent<Camera> ();
@@ -18,6 +18,7 @@ public class GunCamera : MonoBehaviour {
 	public void GunCamera_toggle(){
 		main_camera.enabled = !main_camera.enabled;
 		this_camera.enabled = !this_camera.enabled;
+		gameCanvasScript.setBarEnable (this_camera.enabled);
 	}
 
 }

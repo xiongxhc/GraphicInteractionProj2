@@ -4700,6 +4700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   main_camera: {fileID: 1706106424}
   this_camera: {fileID: 1706106424}
+  gameCanvasScript: {fileID: 494526802}
 --- !u!1 &500990130 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 170206, guid: d6ef9e6786902824d9015c4b743a3ae6, type: 2}
