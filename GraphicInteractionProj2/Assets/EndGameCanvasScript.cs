@@ -17,6 +17,7 @@ public class EndGameCanvasScript : MonoBehaviour {
 		EndGameWaveText.text = gameController.getWaveCount ().ToString();
 	}
 	public void backToMenu(){
+		Time.timeScale = 1;
 		SceneManager.LoadScene("menu", LoadSceneMode.Single);
 	}
 }
