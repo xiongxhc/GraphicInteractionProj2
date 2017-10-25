@@ -11,8 +11,8 @@ public class GameCanvasScript : MonoBehaviour {
 	public Color ReloadColor = Color.red;
 	public Text HealthText;
 	public Text EnermyRemainingText;
-
-	[Tooltip ("TankControl")] public TankControl tankControl;
+	public Canvas LavaHintCanvas;
+	[Tooltip ("TankNavS")] public TankNavS tankNavS;
 	[Tooltip ("shoot")] public shoot shootControl;
 	[Tooltip ("GameController")] public GameController gameController;
 	// Use this for initialization
@@ -25,10 +25,11 @@ public class GameCanvasScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		EnermyRemainingText.text = gameController.countRemainingEnermy ().ToString();
-		if(HealthSlider.enabled)HealthSlider.maxValue = tankControl.getHealthScript ().MaxHealth;
-		if(HealthSlider.enabled)HealthSlider.value = tankControl.getHealthScript ().getCurrentHealth();
-		if(HealthSlider.enabled)HealthText.text = tankControl.getHealthScript ().getCurrentHealth().ToString() + "/" + tankControl.getHealthScript ().MaxHealth.ToString();
+		if(HealthSlider.enabled)HealthSlider.maxValue = tankNavS.getTankControl().getHealthScript ().MaxHealth;
+		if(HealthSlider.enabled)HealthSlider.value = tankNavS.getTankControl().getHealthScript ().getCurrentHealth();
+		if(HealthSlider.enabled)HealthText.text = tankNavS.getTankControl().getHealthScript ().getCurrentHealth().ToString() + "/" + tankNavS.getTankControl().getHealthScript ().MaxHealth.ToString();
 		if(ReloadSlider.enabled)ReloadSlider.value = 100 - (shootControl.getshootCooldownCounter() / shootControl.shootCooldown) * 100;
+		LavaHintCanvas.gameObject.SetActive(tankNavS.getIsOnLava ());
 	}
 	public void enableBars(){
 		HealthSlider.gameObject.SetActive(true);

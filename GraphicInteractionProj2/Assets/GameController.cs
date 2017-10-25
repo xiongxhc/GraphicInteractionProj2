@@ -66,6 +66,7 @@ public class GameController : MonoBehaviour {
 		waitingCanvas = false;
 		waveStarted = true;
 		gameCanvasScript.gameObject.SetActive (true);
+		playerTank.getTankControl ().getHealthScript ().restoreHeathToMax ();
 		foreach (SpawnpointScript s in spawnPoints) {
 			s.startSpawn = true;
 		}

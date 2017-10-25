@@ -139,4 +139,7 @@ public class TankNavS : MonoBehaviour {
 		forceDirection = forceDirection == 0? 1:forceDirection;
 		rb.AddTorque (transform.up * torque * torqueDirection * forceDirection * Time.deltaTime);
 	}
+	public bool getIsOnLava(){
+		return isOnLava;
+	}
 }
