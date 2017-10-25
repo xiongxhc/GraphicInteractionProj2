@@ -57,11 +57,13 @@ public class GameController : MonoBehaviour {
 			Time.timeScale = 1;
 			pauseCanvas.gameObject.SetActive (false);
 			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
 			thirdPersonCam.showCrosshair = true;
 			thirdPersonCam.cameraMove = true;
 		} else {
 			Time.timeScale = 0;
 			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 			pauseCanvas.gameObject.SetActive (true);
 			thirdPersonCam.showCrosshair = false;
 			thirdPersonCam.cameraMove = false;
@@ -82,6 +84,7 @@ public class GameController : MonoBehaviour {
 		thirdPersonCam.showCrosshair = true;
 		thirdPersonCam.cameraMove = true;
 		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		waveCanvasControl.gameObject.SetActive (false);
 		waitingCanvas = false;
 		waveStarted = true;
@@ -105,6 +108,7 @@ public class GameController : MonoBehaviour {
 		endGameCanvasScript.gameObject.SetActive (true);
 		waitingCanvas = true;
 		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 		thirdPersonCam.showCrosshair = false;
 		thirdPersonCam.cameraMove = false;
 		waveCanvasControl.gameObject.SetActive (false);
@@ -122,6 +126,7 @@ public class GameController : MonoBehaviour {
 		thirdPersonCam.showCrosshair = false;
 		thirdPersonCam.cameraMove = false;
 		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 		waveCanvasControl.gameObject.SetActive (true);
 		gameCanvasScript.gameObject.SetActive (false);
 		waveCanvasControl.EnermyArmorText.text = Spawnpoint1.spawnArmor.ToString();
