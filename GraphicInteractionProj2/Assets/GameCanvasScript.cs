@@ -11,6 +11,7 @@ public class GameCanvasScript : MonoBehaviour {
 	public Color ReloadColor = Color.red;
 	public Text HealthText;
 	public Text EnermyRemainingText;
+
 	[Tooltip ("TankControl")] public TankControl tankControl;
 	[Tooltip ("shoot")] public shoot shootControl;
 	[Tooltip ("GameController")] public GameController gameController;

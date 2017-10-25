@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankNavS : MonoBehaviour {
 	[Tooltip ("TankControl")] public TankControl tankControl;
 	[Tooltip ("centerOfMass")] public centerOfMass massCenter;
-
+	public ParticleSystem LavaFire;
 	public UnityEngine.AI.NavMeshAgent nav;
 	private bool AIControl = false;
 	public Rigidbody rb;
@@ -26,6 +26,7 @@ public class TankNavS : MonoBehaviour {
 	public float maxVelocity = 40f;
 	public float NavStartDelay = 0.5f; // depaly navgation active by 0.5 seconds.
 	private float soundOffset;
+	private bool isOnLava = false;
 //	private Quaternion spawnQuaternion = Quaternion.Euler(-90,0,0);
 	// Use this for initialization
 	void Start () {
@@ -39,9 +40,14 @@ public class TankNavS : MonoBehaviour {
 		AIControl = true;
 	}
 	void OnCollisionStay(Collision collision){
+		
 		foreach(ContactPoint contact in collision.contacts){
 			if(contact.thisCollider.name == ("LeftTrack")) leftTrackGrounded = true;
 			if(contact.thisCollider.name == ("RightTrack")) rightTrackGrounded = true;
+			if (collision.gameObject.name.Contains ("Lava")) {
+				Destroy (Instantiate (LavaFire, contact.point, Quaternion.identity).gameObject, 0.2f);
+				isOnLava = true;
+			}
 		}
 	}
 	public TankControl getTankControl(){
@@ -54,6 +60,7 @@ public class TankNavS : MonoBehaviour {
 		return leftTrackGrounded || rightTrackGrounded;
 	}
 	void FixedUpdate(){
+		isOnLava = false;
 		if (AIControl) {
 //			tankControl.transform.localRotation = spawnQuaternion;
 			return;
@@ -106,6 +113,10 @@ public class TankNavS : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
+		if (isOnLava) {
+			tankControl.getHealthScript ().TakeDamageIgnoreArmor (tankControl.getHealthScript().MaxHealth * 0.1f * Time.deltaTime);
+		}
 		NavStartDelay -= Time.deltaTime;
 		NavStartDelay = NavStartDelay <= 0 ? 0 : NavStartDelay;
 		if (AIControl && NavStartDelay <= 0 && !getNav().enabled) {

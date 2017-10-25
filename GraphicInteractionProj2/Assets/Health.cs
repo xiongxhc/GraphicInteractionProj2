@@ -57,9 +57,17 @@ public class Health : MonoBehaviour
 		Slider.value = CurrentHealth;
 		FillImage.color = FullHealthColor;
 	}
-
+	public void TakeDamageIgnoreArmor(float amount){
+		CurrentHealth -= amount;
+		SetHealthUI();
+		if (CurrentHealth <= 0f && !Dead) {
+			OnDeath ();
+		}
+	}
 	public void TakeDamage(float amount)
 	{
+		if (amount < tankControl.getArmor ())
+			return;
 		CurrentHealth -= amount - tankControl.getArmor() * 0.5f;
 		SetHealthUI();
 		if (CurrentHealth <= 0f && !Dead) {

@@ -19652,6 +19652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tankControl: {fileID: 287522035}
   massCenter: {fileID: 584396835}
+  LavaFire: {fileID: 198000011379300114, guid: 6a2d4546cffca1c4d93e0b7ea62a17a4, type: 2}
   nav: {fileID: 2119076241}
   rb: {fileID: 0}
   powerKN: 220
