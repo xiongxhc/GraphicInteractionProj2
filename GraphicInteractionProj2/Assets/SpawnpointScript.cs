@@ -47,6 +47,7 @@ public class SpawnpointScript : MonoBehaviour {
 			newTank.getTankControl ().getHealthScript().setMaxHealth (spawnHealth);
 			newTank.getTankControl ().setCooldown (spawnFireCooldown);
 			newTank.getTankControl ().transform.localRotation = spawnQuaternion;
+			newTank.getTankControl ().enableOnTankUIBar ();
 			newTank.setAIControl ();
 			mainTrackList.Add(newTank);
 			timeTracker = minSpawnCoolDown;

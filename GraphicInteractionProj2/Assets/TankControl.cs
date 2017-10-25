@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class TankControl : MonoBehaviour {
 
 
@@ -17,7 +17,8 @@ public class TankControl : MonoBehaviour {
 	[Tooltip ("shoot")] public shoot shootScript;
 	[Tooltip ("Health")] public Health health;
 	[Tooltip ("ShootingPointController")] public ShootingPointController shootingPointController;
-
+	public Canvas HeathBar;
+	public Canvas ReloadBar;
 	void Start () {
 		//transform.rotation = transform.rotation *= Quaternion.Euler (0, -90, 0);
 		//transform.Rotate (-90, 0, 0);
@@ -49,6 +50,14 @@ public class TankControl : MonoBehaviour {
 	}
 	public void setDamager(float d){
 		shellDamage = d;
+	}
+	public void disableOnTankUIBar(){
+		HeathBar.enabled = false;
+		ReloadBar.enabled = false;
+	}
+	public void enableOnTankUIBar(){
+		HeathBar.enabled = true;
+		ReloadBar.enabled = true;
 	}
 	public void Fire(){
 		shootScript.Fire ();

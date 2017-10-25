@@ -52,6 +52,7 @@ public class Health : MonoBehaviour
 	private void SetHealthUI()
 	{
 		// Adjust the value and colour of the slider.
+		if(!Slider.enabled) return;
 		Slider.maxValue = MaxHealth;
 		Slider.value = CurrentHealth;
 		FillImage.color = FullHealthColor;

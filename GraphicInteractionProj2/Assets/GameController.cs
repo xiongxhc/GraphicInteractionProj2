@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour {
 		spawnPoints.Add(Spawnpoint4);
 		endGameCanvasScript.gameObject.SetActive (false);
 		gameCanvasScript.gameObject.SetActive (true);
+		playerTank.getTankControl ().disableOnTankUIBar ();
 		waveSpawn ();
 	}
 	void OnGUI() {

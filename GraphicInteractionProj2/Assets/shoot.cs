@@ -52,6 +52,8 @@ public class shoot : MonoBehaviour
 		}
 	}
 	private void updateRealoadBar(){
+		if (!Slider.enabled)
+			return;
 		Slider.value = 100 - (shootCooldownCounter / shootCooldown) * 100;
 		FillImage.color = reloadColor;
 	}
