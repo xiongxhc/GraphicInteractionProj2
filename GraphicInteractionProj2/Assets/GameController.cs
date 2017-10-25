@@ -128,6 +128,10 @@ public class GameController : MonoBehaviour {
 		case 1:
 			setSpawnStates (25, 20, 40, 5);
 			Spawnpoint2.SpawnTank (1, npctanks);
+//			Spawnpoint1.SpawnTank (10,npctanks);
+//			Spawnpoint2.SpawnTank (10,npctanks);
+//			Spawnpoint3.SpawnTank (10,npctanks);
+//			Spawnpoint4.SpawnTank (10,npctanks);
 			showWaveCanvas ();
 			break;
 		case 2:
