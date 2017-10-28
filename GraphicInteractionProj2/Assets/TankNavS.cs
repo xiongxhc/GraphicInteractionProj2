@@ -65,21 +65,30 @@ public class TankNavS : MonoBehaviour {
 //			tankControl.transform.localRotation = spawnQuaternion;
 			return;
 		}
-		if (!rb.IsSleeping()) {
-			leftTrackGrounded = false;
-			rightTrackGrounded = false;
-		}
 		if (isGrounded ()) {
 			rb.drag = airDrag + groundGrag;
 		} else {
 			rb.drag = airDrag;
 		}
+		if (isGrounded ()) {
+			var localVelocity = transform.InverseTransformDirection (rb.velocity);
+			// kill drift
+			localVelocity.z = 0;
+			// eliminate overspeed
+			localVelocity.x = localVelocity.x > maxVelocity ? maxVelocity : localVelocity.x;
+			rb.velocity = transform.TransformDirection (localVelocity);
+		}
+
+		if (!rb.IsSleeping()) {
+			leftTrackGrounded = false;
+			rightTrackGrounded = false;
+		}
+
 		if (rb.velocity.magnitude < 0.1f) {
 			torque = torqueKN * 1000 * stationeryTorqueMutiplier;
 		} else {
 			torque = torqueKN * 1000;
 		}
-
 		foreach (Transform child in transform) {
 			var localVel = transform.InverseTransformDirection(rb.velocity);
 			var forwordSpeed = localVel.x;
@@ -102,13 +111,6 @@ public class TankNavS : MonoBehaviour {
 
 		}
 		rb.maxAngularVelocity = maxRotateSpeed;
-
-		var localVelocity = transform.InverseTransformDirection (rb.velocity);
-		// kill drift
-		localVelocity.z = 0;
-		// eliminate overspeed
-		localVelocity.x = localVelocity.x > maxVelocity ? maxVelocity : localVelocity.x;
-		rb.velocity = transform.TransformDirection (localVelocity);
 	}
 
 	// Update is called once per frame
@@ -122,6 +124,8 @@ public class TankNavS : MonoBehaviour {
 		if (AIControl && NavStartDelay <= 0 && !getNav().enabled) {
 			getNav ().enabled = true;
 		}
+
+
 	}
 	public void accelerate(int forceDirection){
 		if(forceDirection!=0)

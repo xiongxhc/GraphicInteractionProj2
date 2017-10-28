@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour {
 		//playerTank.getTankControl ().disableOnTankUIBar ();
 		//playerTank.getTankControl ().enableOnTankUIBar();
 		waveSpawn ();
+		Time.timeScale = 1;
 	}
 	void OnGUI() {
 		
