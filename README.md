@@ -2,7 +2,7 @@
 Graphics and Interaction Project 2 (Unity)
 ```
 Game Type:  Third-Person PvP Shooter
-Game Model: Artillery Combat (Tank & Missile launcher)
+Game Model: Tank Combat (Artillery launcher)
 ```
 
 ### RESOURCES
